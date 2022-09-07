@@ -1,0 +1,186 @@
+Command Line 学習レッスン基礎編
+
+コマンドラインに触れよう
+コマンドラインとは、普段クリックなどをしてコンピュータを操作をするのに対して、文字だけでコンピュータを操作するためのものです。
+このコースで学習するUNIXコマンドは主にLinuxやmacOSで利用されるコマンドの一種です。
+ターミナルと呼ばれるものにコマンド（命令）を入力することで、コンピュータに指示を与えることができます。
+$はコマンドの入力開始点に用意されている記号なので、書く必要はありません。
+
+1. ファイルの作成
+「touch ファイル名」と入力して実行することで、空のファイルを作成することができます。
+コマンドは入力した後にEnterキーを押すことによって、実行することができます。
+
+$ touch beginner.txt
+
+
+2.ファイルの中身を表示する
+コマンドでファイルの中身を表示することができます。それには、catコマンドを使います。
+存在しないファイルを指定するとエラーが出力されます。エラーが出た場合、実行したコマンドは無効になります。
+コマンドラインには補完機能というものがあります。補完機能とはファイル名の入力途中にTabキーを押すことで、残りのファイル名を補完してくれる機能です。
+
+$ cat beginner.txt
+
+
+3.ディレクトリの作成
+ディレクトリを作成するには、mkdirコマンド（make directryの略！）を使います。
+
+$ mkdir html
+
+
+ファイル構造
+コマンドラインでは、ファイル構造を意識することが大切です。
+ファイル構造とは枝分かれした構造のことです。
+ディレクトリの中に新しいファイルなどを作成したい場合には、基本的にそのディレクトリに移動してから作成する必要があります。
+自分が今いるディレクトリをカレントディレクトリと言います。
+
+4.ディレクトリの移動
+ディレクトリを移動するためにはcdコマンド（change directryの略！）を使います。
+また、「$」の左にはカレントディレクトリが表示されています。
+指定できるのはディレクトリ名だけでファイル名を指定することはできません。
+
+~ $ cd html
+html $ touch study.txt
+
+
+5.カレントディレクトリの確認
+1番親のディレクトリにルートディレクトリというものがあります。
+コマンドラインでは、現在作業しているディレクトリを把握していることが大切です。そのため、作業中のディレクトリを確認できるpwdコマンドがあります。
+pwdコマンドを実行すると、ルートディレクトリからカレントディレクトリまでの階層が全て表示されます。
+
+~ $ pwd
+/home/progate
+~ $ cd languages
+languages $ pwd
+/home/progate/languages
+languages $
+
+
+6.ディレクトリの中身を表示する
+ディレクトリの中身を確認するには、ls（エルエス）コマンド（listの略！）を使います。
+lsコマンドで確認できるディレクトリとファイルは、基本的には1つ子の階層だけです。
+
+~ $ ls
+about.txt     beginner.txt  html          languages
+~ $ cd languages
+languages $ ls
+index.txt
+languages $
+
+
+7.1つ親のディレクトリ
+1つ親のディレクトリに移動するときに「cd 1つ親のディレクトリ名」としても移動することができません。
+コマンドラインでは、1つ親のディレクトリを「..」で指定します。
+
+~ $ cd languages
+languages $ pwd
+/home/progate/languages
+languages $ cd ..
+~ $ pwd
+/home/progate
+~ $
+
+
+8.ホームディレクトリ
+ディレクトリを指定せずに「cd」のみで実行すると、ホームディレクトリと呼ばれるディレクトリに移動することができます。
+ホームディレクトリは「~」で表されます。
+このレッスンのホームディレクトリはprogateディレクトリに設定されています。
+
+~ $ cd languages
+languages $ pwd
+/home/progate/languages
+languages $ cd
+~ $ pwd
+/home/progate
+~ $
+
+
+ファイル・ディレクトリを移動させる
+ここからはファイルの移動やコピー、削除といった様々な操作をコマンドで行う方法を学びましょう。
+
+9.ファイル・ディレクトリを移動させる
+ファイルを移動させるには、mvコマンド（moveの略！）を使います。
+「mv ファイル名 ディレクトリ名」とすることで指定したディレクトリにファイルを移動させることができます。
+ファイル1つずつだけでなくディレクトリごと移動させることもできます。
+「mv ディレクトリ名 移動先のディレクトリ名」とすることで、そのディレクトリ以下のファイルやディレクトリも一緒に移動します。
+
+~ $ ls
+about.txt     beginner.txt  html          languages
+~ $ mv beginner.txt html
+~ $ ls
+about.txt  html       languages
+~ $ mv html languages
+~ $ ls
+about.txt  languages
+~ $
+
+
+10.ファイル・ディレクトリ名の変更
+mvコマンドは、ファイル名を変更することにも使えます。
+「mv ファイル名 新しいファイル名」とすることでファイル名を変更できます。
+「mv ディレクトリ名 新しいのディレクトリ名」でディレクトリ名も変更できます。（既存のディレクトリ名を指定するとそこへ移動する）
+
+~ $ cd html
+bash: cd: html: No such file or directory　（ディレクトリの移動は1階層ずつ）
+~ $ cd languages
+languages $ cd html
+html $ mv beginner.txt dojo.txt
+html $ ls
+dojo.txt   study.txt
+html $
+
+
+11.ファイル・ディレクトリのコピー
+ファイルをコピーするにはcpコマンド（copyの略！）を使います。
+「cp コピーするファイル名 新しいファイル名」とすることでコピーすることができます。
+cpコマンドでは「-r」を付けることで、ファイルだけでなくディレクトリもコピーすることができます。
+「cp -r コピーするディレクトリ名 新しいディレクトリ名」とすることでコピーできます。
+
+~ $ cd languages
+languages $ cd html
+html $ cp dojo.txt project.txt
+html $ ls
+dojo.txt     project.txt  study.txt
+html $ cat project.txt
+catコマンドはファイルの中身を
+表示するコマンドです。
+chtml $ cd ..
+languages $ cp -r html ruby
+languages $ cd ruby
+ruby $ ls
+dojo.txt     project.txt  study.txt
+ruby $
+
+
+12.ファイルの削除
+ファイルを削除するにはrmコマンド（removeの略！）を使います。「rm ファイル名」とすることで削除できます。
+rmコマンドは「-r」を付けることでディレクトリも削除することができます。
+「rm -r ディレクトリ」とすることでディレクトリを削除できます。
+
+~ $ cd languages
+languages $ cd ruby
+ruby $ rm project.txt
+ruby $ ls
+dojo.txt   study.txt
+ruby $ cd ..
+languages $ rm -r html
+languages $ ls
+index.txt  ruby
+languages $
+
+
+13.総復習
+過去に実行したコマンドを上矢印キー「↑」で入力することができます。
+
+~ $ mkdir website
+~ $ cd website
+website $ mkdir top
+website $ cd top
+top $ touch top.html
+top $ touch stylesheet.css
+top $ cd ..
+website $ cp -r top about
+website $ cd about
+about $ mv top.html about.html
+about $ cd
+~ $ rm about.txt
+~ $

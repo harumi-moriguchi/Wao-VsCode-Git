@@ -1,0 +1,1182 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css" media="all">
+<title>無題ドキュメント</title>
+</head>
+
+<body>
+
+<section id="lesson2-1">
+	<h3>lesson2-1 コンソールに表示</h3>
+
+	<div class="answer">
+		<p>(コンソールに表示)</p>
+	</div><!--div class="answer"-->
+
+	<div class="explanation">
+		<p>console(<strong>オブジェクト</strong>) は おうむ返し(<strong>パラメータ</strong>) を log(<strong>メソッド</strong>) しなさい</p>
+
+		<h4><strong>オブジェクト</strong>・・～は（指示を出す相手）</h4>
+		<table>
+			<tr>
+				<th>history</th><td>進む・戻るボタン</td>
+			</tr>
+			<tr>
+				<th>window</th><td>ウインドウ</td>
+			</tr>
+			<tr>
+				<th>location</th><td>アドレスバー</td>
+			</tr>
+			<tr>
+				<th>document</th><td>表示ページ</td>
+			</tr>
+			<tr>
+				<th>console</th><td>コンソール</td>
+			</tr>
+		</table>
+
+		<h4><strong>メソッド</strong>・・～しなさい（オブジェクトにさせたい事を指示）</h4>
+		<p>()必ず必要～しなさいの意味</p>
+		<table>
+			<tr>
+				<th>.log()</th><td>()内のテキストや数値を表示する</td>
+			</tr>
+			<tr>
+				<th>.dir()</th><td>()内の複雑なデータをリスト表示する</td>
+			</tr>
+			<tr>
+				<th>.error()</th><td>エラーを表示する</td>
+			</tr>
+		</table>
+
+		<h4><strong>パラメータ</strong>・・～を</h4>
+	</div><!--class="explanation"-->
+</section><!-- id="lesson2-1"-->
+
+<section id="lesson2-3">
+	<h3>lesson2-3 ダイアログボックスを表示する</h3>
+
+	<div class="answer">
+		<form action="#lesson2-3" id="answer2-3">
+			<input type="submit" value="実行">
+		</form>
+	</div><!--div class="answer"-->
+</section>
+
+<section id="lesson2-4">
+	<h3>lesson2-4 HTMLを書き換える</h3>
+
+	<div class="answer">
+		<p id="choice1"></p>
+		<p id="choice2"></p>
+		<p id="choice3"></p>
+	</div><!--div class="answer"-->
+</section>
+
+<section id="lesson3-1">
+	<h3>lesson3-1 確認ダイアログボックスを表示する(条件分岐 if)</h3>
+
+	<div class="answer">
+		<form action="#lesson3-1" id="answer3-1">
+			<input type="submit" value="実行">
+		</form>
+	</div><!--div class="answer"-->
+
+</section>
+
+<section id="lesson3-2">
+	<h3>lesson3-2 入力内容に応じて動作を変更する(変数、条件分岐 else if)</h3>
+
+	<div class="answer">
+		<form action="#lesson3-2" id="answer3-2">
+			<input type="submit" value="実行">
+		</form>
+	</div><!--div class="answer"-->
+
+	<div class="explanation">
+		<div class="column">
+		<h4>変数名のつけ方</h4>
+			<ul>
+				<li>abc(アルファベット) か _ か $ か 123(数字) は使用可能。他の記号は使えない。</li>
+				<li>1文字目に数字は使えない。</li>
+				<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Reserved_Words" target="_blank">予約語</a>は使えない</li>
+			</ul>
+		</div><!--div class="column"-->
+	</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-4">
+	<h3>lesson3-4 数当てゲーム(比較演算子、データ型)</h3>
+
+	<div class="answer">
+		<form action="#lesson3-4" id="answer3-4">
+			<input type="submit" value="実行">
+		</form>
+	</div><!--div class="answer"-->
+
+	<div class="explanation">
+		<div class="column">
+			<h4>比較演算子一覧</h4>
+			<table>
+				<tr>
+					<th>a === b</th><td>aとbが同じときtrue</td>
+				</tr>
+				<tr>
+					<th>a !== b</th><td>aとbが同じでないときtrue</td>
+				</tr>
+				<tr>
+					<th>a < b</th><td>aがbより小さいときtrue</td>
+				</tr>
+				<tr>
+					<th>a <= b</th><td>aがb以下のときtrue</td>
+				</tr>
+				<tr>
+					<th>a > b</th><td>aがbより大きいときtrue</td>
+				</tr>
+				<tr>
+					<th>a >= b</th><td>aがb以上のときtrue</td>
+				</tr>
+			</table>
+		</div><!--div class="column"-->
+	</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-5">
+	<h3>lesson3-5 時間で異なるメッセージを表示する(論理演算子)</h3>
+
+	<div class="answer">
+		<form action="#lesson3-5" id="answer3-5">
+			<input type="submit" value="実行">
+		</form>
+	</div><!--div class="answer"-->
+
+	<div class="explanation">
+		<div class="column">
+			<h4>論理演算子一覧</h4>
+			<table>
+				<tr>
+					<th>a && b</th><td>aとbが両方trueのとき、全体の評価結果がtrue</td>
+				</tr>
+				<tr>
+					<th>a || b</th><td>aとbの少なくともどちらか1つがtrueのとき、全体の評価結果がtrue</td>
+				</tr>
+				<tr>
+					<th>!a</th><td>aがtrueでないとき、評価結果がtrue</td>
+				</tr>
+			</table>
+		</div><!--div class="column"-->
+	</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-6">
+	<h3>lesson3-6 繰り返し(for)</h3>
+
+	<div class="answer">
+		<ul id="answer3_6"></ul>
+	</div><!--div class="answer"-->
+</section>
+
+<section id="lesson3-7">
+<h3>lesson3-7 繰り返し(while)</h3>
+<pre><code>
+var enemy = 100;
+var attack;
+var count = 0;
+
+window.alert('戦闘スタート！');
+while(enemy > 0) {
+	attack = Math.floor(Math.random() * 30) + 1;
+	console.log('モンスターに' + attack + 'のダメージ！');
+  
+  var li = document.createElement('li');
+	li.textContent = 'モンスターに' + attack + 'のダメージ！';
+	document.getElementById('answer3_7_1').appendChild(li);
+  
+	enemy -= attack;
+	count++;
+}
+console.log(count + '回でモンスターを倒した！');
+document.getElementById('answer3_7_2').textContent = count + '回でモンスターを倒した！';
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<form action="#lesson3-7" id="answer3-7">
+	<input type="submit" value="実行">
+</form>
+<ul id="answer3_7_1"></ul>
+<p id="answer3_7_2"></p>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<h4>繰り返しのforとwhile</h4>
+<table>
+<tr>
+<th>for</th><td>繰り返しの回数があらかじめ確定しているときに使いやすい</td>
+</tr>
+<tr>
+<th>while</th><td>繰り返しの回数があらかじめ確定していないときに使いやすい</td>
+</tr>
+</table>
+
+<div class="column">
+<h4>無限ループしてしまったプログラムを強制終了するには</h4>
+<p>Ctrl + Alt + Delete　タスクマネージャーで終了。</p>
+</div><!--div class=""column"-->
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-8">
+<h3>ファンクション</h3>
+<pre><code>
+var total = function(price) {
+	var tax = 0.08;
+	return price + price * tax;
+}
+
+console.log('コーヒーメーカーの値段は' + total(8000) + '円(税込)です。');
+document.getElementById('answer3_8').textContent = 'コーヒーメーカーの値段は' + total(8000) + '円(税込)です。';
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p id="answer3_8"></p>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var total = function(price) {
+	var tax = 0.08;
+	return price + price * tax;
+}
+</code></pre>
+<p>ファンクションとは、良く行う処理を1つにまとめた小さなサブプログラム(プログラム内のミニプログラム)で、使いたいときに呼び出して利用する。</p>
+<p>パラメータpriceは↑{}の中でだけ使える</p>
+<p>ファンクションの定義は呼び出すより前に書く。</p>
+<p>return　でその右側のデータを呼び出し、元に返す。実行されると、ファンクションの処理はそこで終了。</p>
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-9">
+<h3>算術演算子</h3>
+<pre><code>
+var fizzbuzz = function(num) {
+	if(num % 3 === 0 && num % 5 === 0) {
+		return 'fizzbuzz!';
+	} else if(num % 3 === 0) {
+		return 'fizz!';
+	} else if(num % 5 === 0) {
+		return 'buzz!';
+	} else  {
+		return num;
+	}
+}
+for(var i = 1; i <=30; i++) {
+console.log(fizzbuzz(i));
+}
+for(var i = 1; i <=30; i++) {
+var li = document.createElement('li');
+	li.textContent = fizzbuzz(i);
+	document.getElementById('answer3_9').appendChild(li);
+}
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<ul id="answer3_9"></ul>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+	if(num % 3 === 0 && num % 5 === 0) {
+</code></pre>
+<p>numを3で割った値が0かつnumを5で割った値が0</p>
+
+<div class="column">
+<h4>計算に関係のある主な演算子</h4>
+<table>
+<tr>
+<th>a + b</th><td>a+b</td><th>a += b</th><td>a+bしてaに代入</td>
+</tr>
+<tr>
+<th>a - b</th><td>a-b</td><th>a -= b</th><td>a-bしてaに代入</td>
+</tr>
+<tr>
+<th>a * b</th><td>a×b</td><th>a *= b</th><td>a×bしてaに代入</td>
+</tr>
+<tr>
+<th>a / b</th><td>a÷b</td><th>a /= b</th><td>a÷bしてaに代入</td>
+</tr>
+<tr>
+<th>a % b</th><td>a÷bの余り</td><th>a %= b</th><td>a%bの余りをaに代入</td>
+</tr>
+<tr>
+<th>a++ または ++a</th><td>a+1</td><th>a-- または --a</th><td>a-1</td>
+</tr>
+</table>
+</div><!--div class=""column"-->
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-10">
+<h3>配列</h3>
+<pre><code>
+var todo = ['配列1つめの項目(インデックス番号0)','配列2つめの項目(インデックス番号1)','配列3つめの項目(インデックス番号2)','配列4つめの項目(インデックス番号3)'];
+todo.push('配列5つめの項目を追加(インデックス番号4)');
+for(var i = 0; i < todo.length; i++) {
+	var li = document.createElement('li');
+	li.textContent = todo[i];
+	document.getElementById('list').appendChild(li);
+}
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<ul id="list"></ul>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var todo = ['配列1つめの項目(インデックス番号0)','配列2つめの項目(インデックス番号1)','配列3つめの項目(インデックス番号2)','配列4つめの項目(インデックス番号3)'];
+todo.push('配列5つめの項目を追加(インデックス番号4)');
+</code></pre>
+<p>変数todoにデータを登録</p>
+<pre><code>
+for(var i = 0; i < todo.length; i++) {}
+</code></pre>
+<p>変数 i の初期の値が0で、変数 i が、「todoに登録されているデータの個数」より小さければ、変数 i に1足す。</p>
+<pre><code>
+	var li = document.createElement('li');
+</code></pre>
+<p>何もないところからタグ(&lt;li&gt;&lt;/li&gt;)を生成。変数 li に代入。</p>
+<pre><code>
+	li.textContent = todo[i];
+</code></pre>
+<p>&lt;li&gt;&lt;/li&gt;のコンテンツに、配列 todo のインデックス i 番目のデータを指定。</p>
+<pre><code>
+	document.getElementById('list').appendChild(li);
+</code></pre>
+<p>取得した要素.appendChild(挿入したい子要素)　…　&lt;ul id="list"&gt;を取得し、li 要素を子要素として挿入。</p>
+
+<div class="column">
+<h4>配列にデータを追加・削除する主なメソッドの一覧</h4>
+<table>
+<tr>
+<th>配列の変数名.pop()</th><td>配列の最後のデータを削除する</td>
+</tr>
+<tr>
+<th>配列の変数名.push(データ)</th><td>配列の最後にデータを追加する</td>
+</tr>
+<tr>
+<th>配列の変数名.shift()</th><td>配列の最初のデータを削除する</td>
+</tr>
+<tr>
+<th>配列の変数名.unshift(データ1,データ2…)</th><td>配列の最初にデータ1,データ2…を追加する</td>
+</tr>
+</table>
+</div><!--div class=""column"-->
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson3-11">
+<h3>オブジェクト</h3>
+<pre><code>
+var jsbook = {title: 'JavaScript入門', price: 2500, stock: 3};
+
+console.log(jsbook);
+console.log(jsbook.title);
+console.log(jsbook['price']);
+jsbook.stock = 10;
+console.log(jsbook.stock);
+jsbook['stock'] = 100;
+console.log(jsbook.stock);
+
+for(var p in jsbook) {
+	console.log(p + '=' +  jsbook[p]);
+}
+
+document.getElementById('title').textContent = jsbook.title;
+document.getElementById('price').textContent = jsbook.price;
+document.getElementById('stock').textContent = jsbook.stock;
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+(コンソールに表示)
+<p id="lesson3_11"></p>
+<table>
+<tr>
+<td id="title"></td><td id="price"></td><td id="stock"></td>
+</tr>
+</table>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var jsbook = {title: 'JavaScript入門', price: 2500, stock: 3};
+</code></pre>
+<h4>var 変数名 = {プロパティ名1: データ, プロパティ名2: データ, ・・・, プロパティ名X: データ};</h4>
+<p>プロパティがX個あるオブジェクトを作成し、変数に保存する。</p>
+<pre><code>
+for(var p in jsbook) {
+	console.log(p + '=' +  jsbook[p]);
+}
+</code></pre>
+<h4>for...in文</h4>
+<p>オブジェクトに登録されているプロパティの数だけ{}を繰り返す。</p>
+<p>変数p に、オブジェクトに登録されているプロパティのプロパティ名が1つずつ代入される。</p>
+<p>そして、「p(プロパティ名) + '=' +  jsbook[p](データ)」を、連結して表示。</p>
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson4-1">
+<h3>入力内容の取得とイベント</h3>
+<pre><code>
+document.getElementById('form').onsubmit = function() {
+	var search = document.getElementById('form').word.value;
+	document.getElementById('output').textContent = '『' + search + '』の検索中・・・';
+	return false;
+};
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<form action="#" id="form">
+	<input type="text" name="word">
+	<input type="submit" value="検索">
+</form>
+<p id="output4-1"></p>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+&lt;form action="#" id="form"&gt;
+	&lt;input type="text" name="word"&gt;
+	&lt;input type="submit" value="検索"&gt;
+&lt;/form&gt;
+</code></pre>
+<p>word='(textボックスに入力された文字)'のかたちで送信される。</p>
+<p>送信(submit)ボタンがクリックされたら、#(action属性のURL)に入力内容が送信される。</p>
+
+<pre><code>
+document.getElementById('form').onsubmit = function() {
+};
+</code></pre>
+<p>formタグを取得し、onsubmitイベントを発生させ、functionの{}内の処理をする。</p>
+
+<pre><code>
+	var search = document.getElementById('form').word.value;
+</code></pre>
+<p>formタグを取得し、word(textフィールドのinput)を取得。内容を変数searchに代入。</p>
+
+<pre><code>
+	document.getElementById('output').textContent = '『' + search + '』の検索中・・・';
+</code></pre>
+<p>&lt;p id="output"&gt;&lt;/p&gt;　の　textContent　を　『search』　にする</p>
+
+<pre><code>
+	return false;
+</code></pre>
+<p>form action="#" へ移動すると、HTML表示が消えるので、移動をキャンセルする。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson4-2">
+<h3>Dateオブジェクト</h3>
+<pre><code>
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth();
+var date = now.getDate();
+var hour = now.getHours();
+var min = now.getMinutes();
+var ampm = '';
+if(hour < 12) {
+	ampm = 'a.m.';
+} else {
+	ampm = 'p.m.';
+}
+
+var output4_2 = year + '/' + (month + 1) + '/' + date + ' ' + (hour % 12) + ':' + min + ampm;
+document.getElementById('time4-2').textContent = output4_2;
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p>最終アクセス日時:<span id="time4-2"></span></p>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var now = new Date();
+</code></pre>
+<p>Dateオブジェクトを new で初期化して now に代入。()内にパラメータを含めない場合は、現在日時を記憶した状態で初期化される。</p>
+
+<pre><code>
+getMonth()
+</code></pre>
+<p>月を0～11の数値で取得する。0が1月。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson4-3">
+<h3>数字を文字列に変換</h3>
+<pre><code>
+var addZero = function(num, digit) {
+	var numString = String(num);
+	while(numString.length < digit) {
+		numString = '0' + numString;
+	}
+	return numString;
+}
+
+var songs = [
+	'白菜',
+	'とうふ',
+	'長ねぎ',
+	'豚肉',
+	'とりボール',
+	'白だし',
+	'おもち',
+	'かに',
+	'なべ',
+	'七味',
+];
+for(var i = 0; i < songs.length; i++) {
+	var paragraph = document.createElement('p');
+	paragraph.textContent = addZero(i + 1, 2) + '. ' + songs[i];
+	document.getElementById('answer4_3').appendChild(paragraph);
+}
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p>今日のお買いもの</p>
+<div id="answer4_3">
+</div>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var addZero = function(num, digit) {
+</code></pre>
+<p>ファンクションとは、良く行う処理を1つにまとめた小さなサブプログラム(プログラム内のミニプログラム)で、使いたいときに呼び出して利用する。</p>
+<p>addZeroファンクションは、num, digitの2つのパラメータを受け取る。</p>
+
+<pre><code>
+	var numString = String(num);
+</code></pre>
+<p>num を文字列データに変換して、numString　に代入。</p>
+
+<pre><code>
+while(numString.length < digit) {
+		numString = '0' + numString;
+	}
+</code></pre>
+<p>numStringの文字数(.length)が、digitより小さければ、numStringに'0'を連結して、numStringに代入するを繰り返す。</p>
+
+<pre><code>
+for(var i = 0; i < songs.length; i++) {
+	var paragraph = document.createElement('p');
+	paragraph.textContent = addZero(i + 1, 2) + '. ' + songs[i];
+	document.getElementById('answer4_3').appendChild(paragraph);
+}
+</code></pre>
+
+<p>配列songsの項目数ぶん&lt;/p&gt;を生成。</p>
+<p>「インデックス番号(最初は0)+1を桁数整形したもの」、「. 」、「0番目の配列データ」の順に連結。</p>
+<p>id="answer4_3"を取得し、その子要素として、paragraphを入れる。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson4-4">
+<h3>小数点第○位で切り捨てる(Mathオブジェクト)</h3>
+<pre><code>
+document.getElementById('answer4_4_1').textContent = Math.PI;
+document.getElementById('answer4_4_2').textContent = Math.floor(Math.PI);
+
+var point =  function(num, digit) {
+	var time = Math.pow(10, digit);
+	return Math.floor(num * time) / time;
+}
+
+document.getElementById('answer4_4_3').textContent = point(Math.PI, 2);
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p>円周率は
+<span id="answer4_4_1"></span>
+です。</p>
+<p>ふつうに切り捨てると
+<span id="answer4_4_2"></span>
+です。</p>
+<p>小数点第2位で切り捨てると
+<span id="answer4_4_3"></span>
+です。</p>
+<div>
+</div>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+Math.PI
+</code></pre>
+<p>円周率。約3.14159</p>
+
+<pre><code>
+Math.floor(Math.PI)
+</code></pre>
+<p>円周率。約3.14159　の小数点以下を切り捨てる。3</p>
+
+<pre><code>
+point(Math.PI, 2)
+</code></pre>
+<p>pointのファンクション参照。</p>
+
+<pre><code>
+var point =  function(num, digit) {
+	var time = Math.pow(10, digit);
+	return Math.floor(num * time) / time;
+}
+</code></pre>
+<p>今回は、numは3.14159・・で、digitは2。(下のpoint(Math.PI, 2)より。)</p>
+<p>Math.pow(10, digit)は、10をdigit乗する。つまり今回は、10を2乗して100。それをtimeへ代入。</p>
+<p>num(=3.14159・・) を time(=100) を掛けて、小数点を切ったものを、time(=100) で割る。つまり、3.14になる。それをリターンしてファンクション終了。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson5-1">
+<h3>カウントダウンタイマー</h3>
+<pre><code>
+var countdown =  function(due) {
+	var now = new Date();
+	
+	var rest = due.getTime() - now.getTime();
+	var sec = Math.floor(rest / 1000 % 60);
+	var min = Math.floor(rest / 1000 / 60) % 60;
+	var hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+	var days = Math.floor(rest / 1000 / 60 / 60 / 24);
+	var count = [days, hours, min, sec];
+	
+	return count;
+}
+
+var goal = new Date(2020, 7, 24);
+
+var recalc =  function() {
+	var counter = countdown(goal);
+	var time = counter[0] + '日' + counter[1] + '時間' + counter[2] + '分' + counter[3] + '秒';
+	document.getElementById('answer5_1').textContent = time;
+	refresh();
+}
+
+var refresh =  function() {
+	setTimeout(recalc, 1000);
+}
+recalc();
+
+/*
+以下、goalの別の設定方法
+var goal = new Date();
+goal.setHours(23);
+goal.setMinutes(59);
+goal.setSeconds(59);
+
+以下、recalcの別の設定方法
+var recalc =  function() {
+	var counter = countdown(goal);
+	document.getElementById('answer5_1_2').textContent = counter[0] ;
+	document.getElementById('answer5_1_3').textContent = counter[1] ;
+	document.getElementById('answer5_1_4').textContent = counter[2] ;
+	document.getElementById('answer5_1_5').textContent = counter[3] ;
+	refresh();
+}
+*/
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p>東京オリンピックまで</p>
+<p>あと、<span id="answer5_1"></span>。</p>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var goal = new Date();
+goal.setHours(23);
+goal.setMinutes(59);
+goal.setSeconds(59);
+</code></pre>
+<p>goalに保存する時間を、まず初期化し、23時59分59秒にセットする。</p>
+
+<pre><code>
+var goal = new Date(2020, 6, 24);
+</code></pre>
+<p>new Date(年, 月, 日, 時, 分, 秒, ミリ秒)　…　日時を設定した状態で Date オブジェクトを初期化する。<br>
+年と月は必須。以降省略すれば、1日0時0分0秒で初期化される。<br>
+月は「実際の月-1」の数にする必要がある。</p>
+
+<pre><code>
+var countdown =  function(due) {
+</code></pre>
+<p>countdownファンクションは、パラメータとしてゴール時間が設定された countdown(goal) Dateオブジェクト 23時59分59秒 を受け取り、dueに代入する。</p>
+
+<pre><code>
+	var now = new Date();
+</code></pre>
+<p>nowは日時を指定していないので、現在日時を示す。</p>
+
+<pre><code>
+	var rest = due.getTime() - now.getTime();
+</code></pre>
+<p>パラメータdue(goalに設定した日時)のミリ秒から、変数now(現在の日時)のミリ秒を引いて、変数restに代入。</p>
+<p>DateオブジェクトのgetTimeメソッドは、1970年1月1日0時0分から、そのオブジェクトの基準日になっている日時までに経過したミリ秒を取得。</p>
+
+<pre><code>
+	var sec = Math.floor(rest / 1000 % 60);
+</code></pre>
+<p>rest(ミリ秒)÷1000(秒)÷60(分)の余り = sec</p>
+
+<pre><code>
+	var min = Math.floor(rest / 1000 / 60) % 60;
+</code></pre>
+<p>rest(ミリ秒)÷1000(秒)÷60(分)÷60(時)の余り = min</p>
+
+<pre><code>
+	var hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+</code></pre>
+<p>rest(ミリ秒)÷1000(秒)÷60(分)÷60(時)÷24(日)の余り = hours</p>
+
+<pre><code>
+	var days = Math.floor(rest / 1000 / 60 / 60 / 24);
+</code></pre>
+<p>rest(ミリ秒)÷1000(秒)÷60(分)÷60(時)÷24(日) = days</p>
+
+<pre><code>
+	var count = [days, hours, min, sec];
+	
+	return count;
+</code></pre>
+<p>出た値を配列にして、変数countに代入し、呼び出し元にリターン。リターンしたのが、countdownファンクション。</p>
+
+<pre><code>
+var recalc =  function() {
+	var counter = countdown(goal);
+	var time = counter[1] + '時間' + counter[2] + '分' + counter[3] + '秒';
+	document.getElementById('answer5_1_1').textContent = time;
+	refresh();
+}
+</code></pre>
+<p>recalcファンクションは、countdownファンクションを呼び出して残り時間を計算し、文字列連結してHTMLに出力する。</p>
+<p>refreshファンクションを呼び出す。</p>
+
+<pre><code>
+var refresh =  function() {
+	setTimeout(recalc, 1000);
+}
+</code></pre>
+<p>refreshファンクションは、1秒後にrecalcファンクションを実行する。</p>
+<p><strong>setTimeout(ファンクション, 待ち時間)</strong>　…　「待ち時間」後に「ファンクション」を一度だけ実行する。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson5-2">
+<h3>プルダウンメニューで指定ページへ（URLの操作、ブール属性の設定）</h3>
+<pre><code>
+var lang = document.querySelector('html').lang;
+
+var opt;
+if(lang === 'ja') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-4"]');
+} else if(lang === 'en') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-5"]');
+} else if(lang === 'zh') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-6"]');
+}
+opt.selected = true;
+
+document.getElementById('answer5_2').select.onchange =  function() {
+	location.href = document.getElementById('answer5_2').select.value;
+}
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<form id="answer5_2">
+<select name="select">
+<option value="lesson.html#lesson3-4">lesson3-4</option>
+<option value="lesson.html#lesson3-5">lesson3-5</option>
+<option value="lesson.html#lesson3-6">lesson3-6</option>
+<option value="lesson.html#lesson3-7">lesson3-7</option>
+<option value="lesson.html#lesson3-8">lesson3-8</option>
+</select>
+</form>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var lang = document.querySelector('html').lang;
+</code></pre>
+<p>変数 lang に、html' タグの lang 属性の値を代入。</p>
+
+<pre><code>
+var opt;
+if(lang === 'ja') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-4"]');
+} else if(lang === 'en') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-5"]');
+} else if(lang === 'zh') {
+	opt = document.querySelector('option[value="lesson.html#lesson3-6"]');
+}
+
+// switch文だと
+var opt;
+switch(lang) {
+	case 'ja':
+  	opt = document.querySelector('option[value="lesson.html#lesson3-4"]');
+  	break;
+  case 'en':
+		opt = document.querySelector('option[value="lesson.html#lesson3-5"]');
+    break;
+  case 'zh':
+		opt = document.querySelector('option[value="lesson.html#lesson3-6"]');
+    break;
+}
+</code></pre>
+<p>変数 opt に、「&lt;option value="lesson.html#lesson3-4"&gt;lesson3-4&lt;/option&gt;」等を代入。</p>
+
+<pre><code>
+opt.selected = true;
+</code></pre>
+<p>変数 opt のタグに selected を追加。（&lt;option value="lesson.html#lesson3-4" selected&gt;lesson3-4&lt;/option&gt;）</p>
+
+<pre><code>
+document.getElementById('answer5_2').select.onchange =  function() {
+</code></pre>
+<p>.onchangeイベントは、フォームに入力された内容が変わったときに発生。</p>
+<p>&lt;select&gt;に.onchangeイベントが発生したら、function以降の処理が実行される。</p>
+
+<pre><code>
+document.getElementById('answer5_2').select.value;
+</code></pre>
+<p>&lt;select&gt;の.valueプロパティを取得。</p>
+<p>プルダウンメニューの場合は、選択されている&lt;option&gt;のvalue属性を調べるために、その親要素である&lt;select&gt;のvalueプロパティを読み取る。</p>
+
+<pre><code>
+location.href = document.getElementById('answer5_2').select.value;
+</code></pre>
+<p>locationオブジェクトの.hrefプロパティは表示しているページのURLを表す。</p>
+<p>表示しているページのURLを id="answer5_2" で選択した value にする。URLが変更されると、ブラウザはすぐにそのページへ移動する。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson5-3">
+<h3>アンケートへの回答は一度だけ（クッキー Cookie）</h3>
+<pre><code>
+document.getElementById('form5_3').onsubmit = function() {
+	if(Cookies.get('answered') === 'yes') {
+	window.alert('回答ずみです。アンケートの回答は1回しかできません。');
+	return false;
+	} else {
+	Cookies.set('answered', 'yes', {expires:7});
+}
+};
+document.getElementById('remove5_3').onclick = function() {
+	Cookies.remove('answered');
+};
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<p>映画館に行きますか?</p>
+<form id="form5_3" action="lesson.html#lesson5-3-1">
+	<input type="radio" name="frequency">週に1回以上<br>
+  <input type="radio" name="frequency">月に1回くらい<br>
+  <input type="radio" name="frequency">1年に数回程度<br>
+  <input type="radio" name="frequency">ほとんど行かない・映画は観ない<br>
+  <input type="submit" name="送信する" id="submit"><br>
+</form>
+<button id="remove5_3">クッキー削除</button>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+if(Cookies.get('answered') === 'yes') {
+</code></pre>
+<p>クッキーの変数「answered」に'yes'が保存されていれば、次の{～}内の処理が実行される。</p>
+<p>Cookies.get　は、js-cookieライブラリが提供するメソッド。</p>
+
+<pre><code>
+return false;
+</code></pre>
+<p>フォームの基本動作をキャンセルして、lesson.html#lesson5-3-1「ありがとうございました。」へ移動しないようにする。</p>
+
+<pre><code>
+Cookies.set('answered', 'yes', {expires:7});
+</code></pre>
+<p>クッキーに、クッキー名 = answered、値 = yes、有効期限 = 7日間　をセット。</p>
+<p>Cookies.set　は、js-cookieライブラリが提供するメソッド。</p>
+
+<pre><code>
+Cookies.remove('answered');
+</code></pre>
+<p>()で指定するクッキーを削除。</p>
+<p>Cookies.remove　は、js-cookieライブラリが提供するメソッド。</p>
+
+</div><!--div class="explanation"-->
+
+<div class="answer" id="lesson5-3-1">
+<h5>結果2</h5>
+<p>ありがとうございました。</p>
+</div><!--div class="answer"-->
+
+</section>
+
+<section id="lesson5-4">
+<h3>イメージの切り替え</h3>
+<pre><code>
+var thumbs = document.querySelectorAll('.thumb');
+for(var i = 0; i < thumbs.length; i++) {
+	thumbs[i].onclick =  function() {
+		document.getElementById('bigimg').src = 'book-js/5-04_image/step1/' + this.dataset.image;
+	};
+}
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<div class="center">
+<div>
+<img src="book-js/5-04_image/step1/img1.jpg" id="bigimg">
+</div>
+<ul>
+<li><img src="book-js/5-04_image/step1/img1.jpg" class="thumb" data-image="img1.jpg"></li>
+<li><img src="book-js/5-04_image/step1/img2.jpg" class="thumb" data-image="img2.jpg"></li>
+<li><img src="book-js/5-04_image/step1/img3.jpg" class="thumb" data-image="img3.jpg"></li>
+</ul>
+</div>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+document.querySelectorAll('.thumb')
+</code></pre>
+<p>class="thumb"にマッチする要素全てを取得する。</p>
+
+<pre><code>
+for(var i = 0; i < thumbs.length; i++) {
+</code></pre>
+<p>変数　thumbs　の個数分、繰り返し処理する。<br>
+[初めの値は0 ; (thumbs.length = 変数thumbsの個数)まで繰り返す ; 完了したら1増やす]</p>
+
+<pre><code>
+thumbs[i].onclick
+</code></pre>
+<p>thumbs　の　i　番目の要素に、.onclick　イベントを設定。</p>
+
+<pre><code>
+document.getElementById('bigimg').src = 'book-js/5-04_image/step1/' + this.dataset.image;
+</code></pre>
+<p>取得した要素.属性 = 値;</p>
+<p>今回は　大きい画像　の　src　を　book-js/5-04_image/step1/img1.jpg　にした。</p>
+<p>thisは、イベントが発生した要素。ここでは、クリック(onclick イベントが発生)された要素。</p>
+<p>HTMLの　data-image="img1.jpg"　の、「image」は自分で自由に決めたもの。JavaScriptでその値を利用する為。<br>
+.dataset.image(←付けた名前)でその値を読み取る。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson5-5">
+<h3>スライドショー</h3>
+<pre><code>
+var images = ['book-js/5-05_slide/extra/images/image1.jpg', 'book-js/5-05_slide/extra/images/image2.jpg', 'book-js/5-05_slide/extra/images/image3.jpg', 'book-js/5-05_slide/extra/images/image4.jpg', 'book-js/5-05_slide/extra/images/image5.jpg', ];
+var current = 0;
+var pageNum =   function() {
+		document.getElementById('page').textContent = (current + 1) + '/' + images.length;
+}
+var changeImage =  function(num) {
+	if(current + num >=0 && current + num < images.length) {
+		current += num;
+		document.getElementById('main_image').src = images[current];
+		pageNum();
+	}
+};
+
+var preloadImage =  function(path) {
+	var imgTag = document.createElement('img');
+	imgTag.src = path;
+}
+
+for(var i =0; i < images.length; i++) {
+	preloadImage(images[i]);
+}
+
+pageNum();
+
+document.getElementById('prev').onclick = function() {
+	changeImage(-1);
+};
+document.getElementById('next').onclick = function() {
+	changeImage(1);
+};
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+<div class="slide">
+<div class="image_box">
+<img id="main_image" src="book-js/5-05_slide/extra/images/image1.jpg">
+</div><!--div class="image_box"-->
+<div class="toolbar">
+<div class="nav">
+<div id="prev"></div>
+<span id="page"></span>
+<div id="next"></div>
+</div><!--div class="nav"-->
+</div><!--div class="toolbar"-->
+</div><!--div class="slide"-->
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+var images = ['image1.jpg', ・・・ ];
+var current = 0;
+</code></pre>
+<p>配列 images に、全ての大きな画像のパスを登録。</p>
+<p>変数 current は、「いま何枚目の画像を表示しているか」を保存しておくために使う。</p>
+
+<pre><code>
+document.getElementById('page').textContent = (current + 1) + '/' + images.length;
+</code></pre>
+<p>span id="page"　タグ内のテキストコンテンツを、current(配列 images のインデックス番号) + 1　と、/　と、配列 images の項目数を合わせた文字にする。</p>
+
+<pre><code>
+var changeImage =  function(num) {
+</code></pre>
+<p>prev や next ボタンをクリックした時に渡された、-1 や 1 は、パラメータ num に代入。</p>
+
+<pre><code>
+if(current + num >=0 && current + num < images.length) {
+</code></pre>
+<p>current + num が 0 以上、かつ current + num が、配列 images の項目数より少ないときに true になり、続く{～}が実行される。</p>
+<p>例えば最初の画像が表示されている時、next をクリックすると、 num は 1 。つまり、current + num は、0+1=1。なので、 true になる。<br>
+逆に、prev をクリックすると、num は -1 。つまり、current + num は、0+(-1)=-1。なので、 false になる。</p>
+
+<pre><code>
+current += num;
+document.getElementById('main_image').src = images[current];
+pageNum();
+</code></pre>
+<p>current に 1 を足すと、numになる。</p>
+<p>img id="main_image" の src が配列 image の current 番目のパスになる。</p>
+<p>pageNumを実行する。</p>
+
+<pre><code>
+var preloadImage =  function(path) {
+	var imgTag = document.createElement('img');
+	imgTag.src = path;
+}
+</code></pre>
+<p><strong>(画像をプリロードする為のコード1)</strong></p>
+<p>.createElement は、()内のタグ名を持つタグを生成して、メモリに保存する。</p>
+<p>生成した &lt;img&gt; タグを、変数 imgTag に代入。</p>
+<p>imgTag に代入された &lt;img&gt; タグの src 属性に、配列 images に登録された画像のパスを指定。</p>
+
+<pre><code>
+<p><strong>(画像をプリロードする為のコード2)</strong></p>
+for(var i =0; i < images.length; i++) {
+	preloadImage(images[i]);
+}
+</code></pre>
+<p>配列imagesの項目数ぶん、繰り返しpreloadImageファンクションを呼び出す。</p>
+
+</div><!--div class="explanation"-->
+</section>
+
+<section id="lesson6-1">
+<h3>開閉するナビゲーションメニュー</h3>
+<pre><code>
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+
+<div class="sidebar">
+	<div class="submenu">
+		<p>1. 会社概要</p>
+			<ul class="hidden">
+				<li><a href="">- 社長挨拶</a></li>
+        <li><a href="">- 会社の歴史</a></li>
+        <li><a href="">- メンバー紹介</a></li>
+        <li><a href="">- アドレス</a></li>
+      </ul>
+  </div>
+  <div class="submenu">
+		<p>2. 商品紹介</p>
+			<ul class="hidden">
+				<li><a href="">- パソコン</a></li>
+        <li><a href="">- スマホ</a></li>
+        <li><a href="">- キーボード</a></li>
+      </ul>
+  </div>
+</div>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+</code></pre>
+<p></p>
+
+<section id="lesson0-0">
+<h3>タイトル</h3>
+<pre><code>
+</code></pre>
+
+<div class="answer">
+<h5>結果</h5>
+</div><!--div class="answer"-->
+
+<div class="explanation">
+<h6>解説</h6>
+<pre><code>
+</code></pre>
+<p></p>
+
+</div><!--div class="explanation"-->
+</section>
+
+
+
+
+<script src="scripts/js.cookie.js"></script>
+<script src="script.js"></script>
+<script>
+// ↑script.jsの後に実行される
+console.log('HTMLに書いたよ');
+</script>
+</body>
+</html>

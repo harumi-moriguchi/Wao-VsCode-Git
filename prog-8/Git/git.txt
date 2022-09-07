@@ -1,0 +1,125 @@
+Git 学習レッスン I
+ファイルを共有してみよう！
+
+1. Gitの準備
+
+mysite $ git init
+Initialized empty Git repository in /home/progate/first/mysite/.git/
+mysite $
+
+
+2.共有するファイルを選択しよう
+
+mysite $ git add index.html
+mysite $
+
+
+3.選択したファイルを記録しよう（コミットする）
+
+mysite $ git commit -m "Create index.html"
+[master (root-commit) fc24b80] Create index.html
+ 1 file changed, 12 insertions(+)
+ create mode 100644 index.html
+mysite $
+
+
+4.リモートリポジトリの準備
+リモートリポジトリを登録する際には名前を付ける必要があり、一般的には「origin」とすることが多い。
+
+mysite $ git remote add origin https://prog-8.com/mysite.git
+mysite $
+
+
+5.リモートリポジトリにファイルをアップロードする（プッシュする）
+
+mysite $ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 453 bytes | 453.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: From /home/progate/.remote/mysite
+remote:  * [new branch]      master     -> origin/master
+To /home/progate/.remote/mysite.git
+ * [new branch]      master -> master
+mysite $
+
+
+6.リモートリポジトリのファイルをダウンロードする（プルする）
+
+mysite $ git pull origin master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)Unpacking objects: 100% (3/3), done.
+From /home/progate/.remote/mysite
+ * branch            master     -> FETCH_HEAD * [new branch]      master     -> origin/master
+mysite $
+
+
+7.共同開発の流れをおさらいしよう
+
+mysite $ git add stylesheet.css
+mysite $ git commit -m "Create stylesheet.css"
+：
+mysite $ git push origin master
+：
+
+mysite $ git pull origin master
+：
+
+
+変更履歴を把握しよう
+
+8.変更したファイルを把握しよう
+git status
+変更があったファイルは赤色で表示される
+
+mysite $ git status
+：
+
+
+9.変更したコードを把握しよう
+git diff
+追加されたコードが緑色で表示される
+さらに、コードを変更した部分では、変更前のコードが赤色、変更後のコードが緑色で表示される。
+
+mysite $ git diff
+
+：
+
+mysite $ git add index.html
+
+
+10.addしたファイルを確認しよう
+git status
+どのファイルを add していて、どのファイルがまだ add されていないかを確認することができる。
+add されたファイルが緑色、まだ add されていないファイルが赤色で表示される。
+
+mysite $ git status
+：
+
+mysite $ git add stylesheet.css
+：
+
+
+11.わかりやすいコミットメッセージを書こう
+
+mysite $ git commit -m "Change subtitle color"
+：
+
+mysite $ git push origin master
+：
+
+
+12.コミット履歴を確認しよう
+git log
+自分や他人のコミットを確認することができる。
+git log -p
+コミットメッセージだけでなく、変更内容が見られる。
+
+mysite $ git pull origin master
+：
+mysite $ git log
+：
+mysite $ git log -p
+：

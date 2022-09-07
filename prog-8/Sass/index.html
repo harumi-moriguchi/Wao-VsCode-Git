@@ -1,0 +1,150 @@
+<h3>Sass 学習レッスン I</h3>
+
+  <h4>Sassの基礎を学ぼう</h4>
+  <p>「Sass（サス）」はCSSをより便利かつ効率的に書くことができる言語です。</p>
+  <p>SassにはSASS記法とSCSS記法の2種類の書き方があります。Progateでは主流であるScss記法を扱っていきます。また、ファイル拡張子も「.css」ではなく「.scss」となりますので注意してください。</p>
+
+    <h5>1.入れ子構造</h5>
+    <p>Sassでは1つのセレクタの中に別のセレクタを入れ子にして指定することができます。これにより、同じセレクタを何度も書かなくて良いことになります。</p>
+
+      <div class="main1">
+        <h6>Sassとは</h6>
+        <p>「Sass（サス）」はCSSをより便利かつ効率的に書くことができる言語です。</p>
+      </div>
+
+
+    <h5>2.&記号 (1)</h5>
+    <p>入れ子構造を使うことによって、左の図の「セレクタ:hover」を「&:hover」というように書き換えることができます。</p>
+
+      <div class="main2">
+        <h3>ProgateでSassを学習しよう！</h3>
+        <span class="button">さっそく始める</span>
+      </div>
+
+    
+    <h5>3.&記号 (2)</h5>
+    <p>「特定要素の指定」は、Sassの&記号を用いると簡単に記述できます。</p>
+
+      <div class="main3">
+        <h3 class="title">Sassコースの学習内容</h3>
+        <ul>
+          <li>1. 入れ子構造</li>
+          <li>2. &記号 (1)</li>
+          <li class="current-page">3. &記号 (2)</li>
+          <li>4. 変数</li>
+          <li>5. mixin (1)</li>
+          <li>6. mixin (2)</li>
+          <li>7. import</li>
+        </ul>
+      </div>
+
+
+    <h5>4.変数</h5>
+    <p>変数は「$変数名: 値;」で定義します。「左の変数に右の値を入れる」という意味で、これを代入といいます。</p>
+    <p>使用したい箇所で変数名を記述することで、変数に格納されていた値が自動的に置き換えられます。</p>
+    <p>変数は利用する箇所より前で定義しないと使えません。</p>
+    <p>変数は利用できる範囲も指定できます。この利用できる範囲のことを「スコープ」といいます。</p>
+
+      <div class="main4">
+        <h2 class="title">にんじゃわんこ</h2>
+        <p class="description">
+          Progate公式キャラクターです。
+          <br>
+          皆さんの学習サポートを担当をしています。
+        </p>
+        <div class="button">
+          プロフィールを見る
+        </div>
+      </div>
+
+
+    <h5>5.mixin (1)</h5>
+    <p>mixinとは、いくつかのコードを1つにまとめて、複数箇所で簡単に呼び出すことができる機能です。</p>
+    <p>mixinは下の図のように「@mixin mixin名 { コード }」とすることで定義できます。</p>
+    <p>mixinは、使用したいSassファイルの中で「@include mixin名」とすることで使うことができます。</p>
+    
+    <h5>6.mixin (2)</h5>
+    <p>mixinには色などの情報を「引数（ひきすう）」として渡すことができます。</p>
+    <p>前もってmixinの引数を指定しておくことで、includeから値を渡すことができます。</p>
+    <p>includeごとに値を指定できるため、柔軟にコードを作成することができます。</p>
+
+      <div class="main5">
+        <div class="small"></div>
+        <div class="medium"></div>
+        <div class="large"></div>
+      </div>
+
+
+    <h5>7.関数</h5>
+    <p>Sassでは様々な関数が用意されています。</p>
+
+      <div class="main6">
+        <ul>
+          <li class="blue1"></li>
+          <li class="blue2"></li>
+          <li class="blue3"></li>
+          <li class="blue4"></li>
+        </ul>
+      </div>
+
+
+    <h5>8.import</h5>
+    <p>外部のファイルを読み込む「import」について見ていきましょう。</p>
+    <p>読み込み先のファイル名の先頭には「_（アンダーバー）」を付ける必要があります。</p>
+    <p>また、ファイルを読み込むためには右の図のように「@import "ファイル名"」とします。</p>
+
+      <div class="main7">
+        <h3 class="title">Progateをシェアしよう</h3>
+        <div class="twitter button">
+          <i class="fa fa-twitter"></i>
+        </div>
+        <div class="facebook button">
+          <i class="fa fa-facebook"></i>
+        </div>
+      </div>
+
+
+    <h5>9.目標物を確認しよう</h5>
+    <h5>10.プロフィールを作ってみよう</h5>
+    <h5>11.mixinを活用する</h5>
+    <h5>12.引数を活用する</h5>
+    <h5>13.関数を活用してみよう</h5>
+    <h5>14.変数をまとめてみよう</h5>
+    <h5>15.総合課題</h5>
+    <p></p>
+
+      <div class="main8">
+        <header>
+          にんじゃわんこのホームページ
+        </header>
+
+        <div class="profile">
+          <img class="profile-img" src="https://prog-8.com/images/sass/wanko.svg">
+          <div class='info'>
+            <p>にんじゃわんこのホームページです！</p>
+            <p>ぼくの勉強記録を公開しています。</p>
+          </div>
+        </div>
+
+        <div class='html'>
+          <h4>HTML & CSS</h4>
+          <img src="https://prog-8.com/images/sass/html.svg">
+          <a href="#">勉強記録をみる</a>
+        </div>
+        <div class="javascript">
+          <h4>JavaScript</h4>
+          <img src="https://prog-8.com/images/sass/javascript.svg">
+          <a href="#">勉強記録をみる</a>
+        </div>
+        <div class="ruby">
+          <h4>Ruby</h4>
+          <img src="https://prog-8.com/images/sass/ruby.svg">
+          <a href="#">勉強記録をみる</a>
+        </div>
+
+        <footer>
+          ©︎ ︎Ninjawanko
+        </footer>
+      </div>
+    
+    

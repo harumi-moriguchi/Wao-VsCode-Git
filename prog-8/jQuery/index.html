@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Progate</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <!-- jQueryの読み込み -->
+  <!-- jQueryを使用するには、<head>タグの中でライブラリのURLを読み込みます。 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-left">
+        <img class="logo" src="https://prog-8.com/images/html/advanced/main_logo.png">
+      </div>
+      <div class="header-right">
+        <div class="login" id="login-show">ログイン</div>
+        <!-- 「login-modal」というidを追加 -->
+      </div>
+    </div>
+  </header>
+
+  <h3>jQuery学習レッスン初級編</h3>
+
+    <h4>jQueryの基礎</h4>
+
+      <h5>2.メソッドを使ってみよう</h5>
+
+        <h1>jQueryの学習項目</h1>
+
+      <h5>3.アニメーションを使おう</h5>
+
+        <img id="img3" src="https://prog-8.com/images/html/beginner/wanko.jpg">
+        <p id="p3">jQueryを学ぼう</p>
+
+      <h5>4.classとid</h5>
+
+        <h6 id="title4">jQueryの学習項目</h6>
+      
+        <div class="lessons">
+          <div class="lesson-item4">要素を隠す</div>
+          <div class="lesson-item4">要素を表示する</div>
+        </div>
+
+      <h5>5.要素を表示しよう</h5>
+
+        <h6 id="title5">Progateへようこそ</h6>
+        <img id="image5" src="https://prog-8.com/images/html/beginner/wanko.jpg">
+
+      <h5>6.clickイベント</h5>
+
+        <div class="btn" id="hide-text6">説明を隠す</div>
+        <h6 id="text6">Hello, World!</h6>
+
+      <h5>7.cssメソッド</h5>
+
+        <div class="btn" id="change-css7">CSSを変更</div>
+        <h6 id="text7">Hello, World!</h6>
+
+      <h5>8.textメソッドとhtmlメソッド</h5>
+
+        <div class="btn" id="change-text8">文字列を変更</div>
+        <div class="btn" id="change-html8">HTMLを変更</div>
+        <h6 id="text8">Hello, World!</h6>
+
+      <h5>9.this</h5>
+        <ul>
+          <li class="list-item9">リスト1</li>
+          <li class="list-item9">リスト2</li>
+          <li class="list-item9">リスト3</li>
+        </ul>
+
+      <h5>10.変数とメソッドチェーン</h5>
+
+        <div class="btn">ボタンをクリック</div>
+        <h6 id="title10">こんにちは、にんじゃわんこさん</h6>
+        <p id="text10">プログラミングの世界へようこそ！</p>
+
+      <h5>11.find・children</h5>
+
+        <div class="btn" id="find-method11">findメソッド</div>
+        <div class="btn" id="children-method11">childrenメソッド</div>
+        
+        <div id="wrapper11">
+          <a href="#">リンク1</a>
+          <div>
+            <a href="#">リンク2</a>
+          </div>
+        </div>
+
+      <h5>12.hoverイベント</h5>
+
+        <div id ="language-wrapper12">
+          <h6 class="language-title12">jQueryとは?</h6>
+          <p class="language-text12">
+            JavaScriptのライブラリの1つです。ユーザーのクリックに反応して表示されるフォームや、アニメーションなど、HTMLとCSSだけでは実現できなかった様々な動きを表現することができます。
+          </p>
+        </div>
+
+
+  <h3>jQuery学習レッスン中級編</h3>
+
+    <h4>WEBページを作ろう(1)</h4>
+     
+  <!-- モーダル新規登録 -->
+  <div class="signup-modal-wrapper" id="signup-modal">
+    <div class="modal">
+      <!-- 共通モーダルを閉じるボタン -->
+      <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+      </div>
+      <div id="signup-form">
+        <h2>Emailで新規登録</h2>
+        <form action="#">
+          <input class="form-control" type="text" placeholder="メールアドレス">
+          <input class="form-control" type="password" placeholder="パスワード">
+          <div id="submit-btn">新規登録</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダルログイン -->
+  <div class="login-modal-wrapper" id="login-modal">
+    <div class="modal">
+      <!-- 共通モーダルを閉じるボタン -->
+      <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+      </div>
+      <div id="login-form">
+        <h2>Emailログイン</h2>
+        <form action="#">
+          <input class="form-control" type="text" placeholder="メールアドレス">
+          <input class="form-control" type="password" placeholder="パスワード">
+          <div id="submit-btn">ログイン</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-wrapper">
+    <div class="container">
+      <h1>LEARN TO CODE.<br>LEARN TO BE CREATIVE.</h1>
+      <p>progateはオンラインプログラミング学習サービスです。<br>初心者にもやさしいスライドとレッスンで、ウェブサービスを作りながらプログラミングを学んでいきましょう。</p>
+      <div class="btn signup signup-show">新規登録はこちら</div>
+      <p>or</p>
+      <div class="btn facebook"><span class="fa fa-facebook"></span>Facebookで登録</div>
+      <div class="btn twitter"><span class="fa fa-twitter"></span>Twitterで登録</div>
+    </div>
+  </div>
+  <div class="lesson-wrapper">
+    <div class="container">
+      <div class="heading">
+        <h2>Learn Where to Get Started!</h2>
+      </div>
+      <div class="lessons">
+
+        <div class="lesson lesson-hover">
+          <div class="lesson-icon">
+            <img src="https://prog-8.com/images/html/advanced/html.png">
+            <p>HTML & CSS</p>
+          </div>
+          <p class="text-contents">ウェブページの作成に使用される言語です。HTMLとCSSを組み合わせることで、静的なページを作り上げることができます。</p>
+        </div>
+
+        <div class="lesson lesson-hover">
+          <div class="lesson-icon">
+            <img src="https://prog-8.com/images/html/advanced/jQuery.png">
+            <p>jQuery</p>
+          </div>
+          <p class="text-contents">素敵な動きを手軽に実装できるJavaScriptライブラリです。 アニメーション効果をつけたり、Ajax（エイジャックス）を使って外部ファイルを読み込んだりと色々なことができます。</p>
+        </div>
+
+        <div class="lesson lesson-hover">
+          <div class="lesson-icon">
+            <img src="https://prog-8.com/images/html/advanced/ruby.png">
+            <p>Ruby</p>
+          </div>
+          <p class="text-contents">オープンソースの動的なプログラミング言語で、 シンプルさと高い生産性を備えています。大きなWebアプリケーションから小さな日用ツールまで、さまざまなソフトウェアを作ることができます。</p>
+        </div>
+
+        <div class="lesson lesson-hover">
+          <div class="lesson-icon">
+            <img src="https://prog-8.com/images/html/advanced/php.png">
+            <p>PHP</p>
+          </div>
+          <p class="text-contents">HTMLだけではページの内容を変えることはできません。PHPはHTMLにプログラムを埋め込み、それを可能にします。</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="faq-wrapper">
+    <div class="container">
+      <div class="heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq">
+        
+        <ul id="faq-list">
+          <li class="faq-list-item">
+            <h3 class="question">Progateの公式キャラクターはなんですか？</h3>
+            <span>+</span>
+            <div class="answer">
+              <p>にんじゃわんこといいます。忍者の格好をしたわんこです。ネコではありません。</p>
+            </div>
+          </li>
+          <li class="faq-list-item">
+            <h3 class="question">にんじゃわんこはオスですか？それともメスですか？</h3>
+            <span>+</span>
+            <div class="answer">
+              <p>にんじゃわんこはオスです。</p>
+            </div>
+          </li>
+          <li class="faq-list-item">
+            <h3 class="question">にんじゃわんこは何歳ですか？</h3>
+            <span>+</span>
+            <div class="answer">
+              <p>にんじゃわんこは14歳です。</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <div class="message-wrapper">
+    <div class="container">
+      <div class="heading">
+        <h2>さぁ、あなたもProgateでプログラミングを学んでみませんか?</h2>
+        <h3 id="tagline">Let's learn to code, learn to be creative!</h3>
+      </div>
+      <div class="btn message signup-show">さっそく開発する</div>
+    </div>
+  </div>
+
+
+  <h3>jQuery学習レッスン上級編</h3>
+
+    <h4>スライドを作ろう</h4>
+
+      <h5>1.eqメソッド</h5>
+
+        <div class="slide-wrapper">
+          <h2 class="slide-title">にんじゃわんこの一年</h2>
+          <div class="hide-btn-wrapper">
+            <div class="hide-btn" id="hide-btn">2枚目（梅雨のわんこ）を隠す</div>
+          </div>
+          <ul class="slides">
+            <li class="slide1"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/spring.jpg"></li>
+            <li class="slide1"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/rainy.jpg"></li>
+            <li class="slide1"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/autumn.jpg"></li>
+            <li class="slide1"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/winter.jpg"></li>
+          </ul>
+        </div>
+
+
+      <h5>2.表示するスライドを切り替えよう</h5>
+      <h5>3.indexメソッド</h5>
+      <h5>4.prevとnext</h5>
+      <h5>5.ボタンの表示/非表示</h5>
+
+        <div class="slide-wrapper">
+          <h2 class="slide-title">にんじゃわんこの一年</h2>
+          <div class="change-btn-wrapper">
+            <div class="change-btn prev-btn">← 前へ</div>
+            <div class="change-btn next-btn">次へ →</div>
+          </div>
+          <ul class="slides">
+            <li class="slide2 active"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/spring.jpg"></li>
+            <li class="slide2"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/rainy.jpg"></li>
+            <li class="slide2"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/autumn.jpg"></li>
+            <li class="slide2"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/winter.jpg"></li>
+          </ul>
+          <div class="index-btn-wrapper">
+            <div class="index-btn">1</div>
+            <div class="index-btn" id="second-btn">2</div>
+            <div class="index-btn">3</div>
+            <div class="index-btn">4</div>  
+          </div>
+        </div>
+
+
+        <h5>6.関数を使おう</h5>
+        <h5>7.length</h5>
+
+        <div class="slide-wrapper">
+          <h2 class="slide-title">にんじゃわんこの一年</h2>
+          <div class="change-btn-wrapper">
+            <div class="change-btn6 prev-btn6">← 前へ</div>
+            <div class="change-btn6 next-btn6">次へ →</div>
+          </div>
+          <ul class="slides">
+            <li class="slide6 active6"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/spring.jpg"></li>
+            <li class="slide6"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/rainy.jpg"></li>
+            <li class="slide6"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/summer.jpg"></li>
+            <li class="slide6"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/autumn.jpg"></li>
+            <li class="slide6"><img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/winter.jpg"></li>
+          </ul>
+          <div class="index-btn-wrapper">
+            <div class="index-btn6">1</div>
+            <div class="index-btn6">2</div>
+            <div class="index-btn6">3</div>
+            <div class="index-btn6">4</div>
+            <div class="index-btn6">5</div>
+          </div>
+        </div>
+
+
+        <h5>8.要素の値を取得しよう（1）</h5>
+        <h5>9.要素の値を取得しよう（2）</h5>
+
+        <div class="container8">
+          <div class="section-title">
+            <h3 id="title">にんじゃわんこについて</h3>
+          </div>
+          <div class="section-content">
+            <p id="content">
+              Progateで飼われている柴犬。
+              忍者の格好をするのが趣味(可愛いさが際立つと思っている)。
+              妖精によって深夜4時半頃に召喚され、それ以来Progateのサイトに居座るように。
+              Progateでは、ユーザーの癒やしから、学習のサポートまでを担当。
+              また、フィードバック番長も努め、ユーザーにフィードバックを返信しないと毎日22時に怒鳴ってくる。
+            </p>
+            <a href="https://prog-8.com" id="link">→ にんじゃわんこについてもっと詳しく</a>
+          </div>
+          <div class="output-wrapper">
+            <h4>内容</h4>
+            <div class="output-inner">
+              <p class="output-item">タイトル：<span id="title-text"></span></p>
+              <p class="output-item">文章のid：<span id="content-id"></span></p>
+              <p class="output-item">リンクのURL：<span id="link-href"></span></p>
+            </div>
+          </div>
+        </div>
+
+        <h5>10.入力欄の値を取得しよう</h5>
+        <h5>11.選択ボックスの値を取得しよう</h5>
+        <h5>12.フォームの入力チェックをしよう</h5>
+        <h5>13.入力欄への自動入力</h5>
+        <h5>14.選択ボックスの自動選択</h5>
+
+        <div class="container10">
+          <div class="section-title">
+            <h3>キャラクター総選挙</h3>  
+            <p class="call-to-action">好きなキャラクターをクリック！</p>
+            <div class="option-wrapper">
+              <div class="option-group">
+                <img class="option-image" src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/progate_baby_wanko.png">
+                <div class="option-btn" data-option="1">1. ベイビーわんこ</div>
+              </div>
+              <div class="option-group">
+                <img class="option-image" src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/progate_wanko.png">
+                <div class="option-btn" data-option="2">2. にんじゃわんこ</div>
+              </div>
+              <div class="option-group">
+                <img class="option-image" src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/progate_hitsuji.png">
+                <div class="option-btn" data-option="3">3. ひつじ仙人</div>
+              </div>
+            </div>
+            <form id="form" class="form">
+              <div class="form-group">
+                <div>キャラクター：</div>
+                <select id="select-form" class="select-form">
+                  <option value="0">選択してください</option>
+                  <option value="1">1. ベイビーわんこ</option>
+                  <option value="2">2. にんじゃわんこ</option>
+                  <option value="3">3. ひつじ仙人</option>
+                </select>  
+              </div>
+              <div class="form-group">
+                <p id="error-message" class="error-message"></p>
+                <div>理由：</div>
+                <textarea id="text-form" class="text-form"></textarea>  
+              </div>
+              <button type="submit" class="btn btn-submit">送信</button>
+            </form>
+            <div class="output-wrapper">
+              <h4>結果</h4>
+              <div class="output-inner">
+                <p class="output-item">好きなキャラクター：<span id="output-select"></span></p>
+                <p class="output-item">理由：<span id="output-text"></span></p>  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h5>15.選択ボックスの自動選択</h5>
+
+        <div class="c15">
+
+          <!-- ヘッダー -->
+          <header>
+            <div class="container">
+              <div class="header-title">
+                <div id="top-btn" class="header-logo">にんじゃわんこの部屋</div>
+              </div>
+              <div class="header-menu">
+                <ul class="header-menu-right">
+                  <li>
+                    <a href="#stamps">LINEスタンプ</a>
+                  </li>
+                  <li>
+                    <a href="#interview">インタビュー</a>
+                  </li>
+                  <li>
+                    <a href="#contact">お問い合わせ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- トップ部分 -->
+          <div class="top-section gray-section">
+            <div class="top-inner">
+              <div class="container">
+                <div class="top-description">
+                  <h2>ようこそ！にんじゃわんこの部屋へ！</h2>
+                  <p>Progate公式キャラクター「にんじゃわんこ」の日常です。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- スライダー -->
+          <div id="stamps" class="stamps-section">
+            <div class="container">
+              <div class="section-title">
+                <h3>LINEスタンプ大好評発売中！</h3>
+              </div>
+              <div id="stamp-carousel" class="carousel slide" data-ride="carousel"> 
+                <ol class="carousel-indicators">
+                  <li data-target="#stamp-carousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#stamp-carousel" data-slide-to="1" class=""></li>
+                  <li data-target="#stamp-carousel" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item stamp-box active">
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/LineStamp1.jpg" class="stamp-image">
+                    <h4>にんじゃわんこがLINEスタンプに登場！</h4>
+                  </div>
+                  <div class="item stamp-box">
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/LineStamp2.jpg" class="stamp-image">
+                    <h4>プログラミング関連のスタンプも！</h4>
+                  </div>
+                  <div class="item stamp-box">
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/LineStamp3.jpg" class="stamp-image">
+                    <h4>新キャラ・ベイビーわんこも！</h4>
+                  </div>
+                </div> 
+              </div> 
+              <p>全40種類！使いやすく、可愛い！にんじゃわんこの日常を表現したスタンプです！<br>
+                ご購入は<a class="stamp-link" href="https://store.line.me/stickershop/product/1132359/ja" target="_blank"> こちら</a>（LINE STORE）から！
+              </p>
+            </div>
+          </div>
+
+          <!-- インタビュー -->
+          <div id="interview" class="interview-section">
+            <div class="interview-section-top gray-section">
+              <div class="container">
+                <div class="section-title">
+                  <h3>特別インタビュー</h3>
+                </div>
+                <img class="interview-image" src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/jquery/advanced/interview_wanko.jpg">
+              </div>
+            </div>
+            <div class="interview-section-bottom">
+              <div class="container">
+                <div class="interview-box">
+                  <h5>Q. 普段はどのような活動をされているのですか？</h5>
+                  基本的に、渋谷にあるProgateのオフィスでくつろぐのが日課でござる。Progateのオフィスは本当に居心地が良いでござる。
+                  スピーカーで好きな音楽を流しながら、カフェみたいな空間でProgateの宣伝方法について考えてる時間は、最高に充実しているでござる。
+                </div>
+                <div class="interview-box">
+                  <h5>Q. にんじゃわんこさんは、プログラミングはできるのですか？また、得意な言語は何ですか？</h5>
+                  Progateのレッスンは全て終了したから、それなりにはできるでござる。最近は本気でエンジニアを目指して、WankoBook Proを購入したでござる。<br>
+                  得意な言語は、Rubyでござる。Railsで面白いWebアプリを作りたいでござる。
+                </div>
+                <div class="interview-box">
+                  <h5>Q. 好きな食べものは何ですか？やっぱりドッグフードですか？</h5>
+                  ラーメンが大好きでござる。オフィスの近くには美味しいラーメン屋さんが多くあって幸せでござる。<br>
+                  ドッグフードはおいしくないでござる。炊きたてのご飯の方が何倍も美味しいと思うでござる。
+                </div>
+                <div class="interview-box">
+                  <h5>Q. 最後に、今後の活動展開について教えてください。</h5>
+                  今後はさらにProgateの宣伝に努めていくでござる。あと、僕のLINEスタンプも。スタンプの売上は拙者のお小遣いになるから、是非ともみんなに買ってほしいでござる。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div id="contact" class="contact-section gray-section">
+            <div class="contact-section-inner">
+              <div class="container">
+                <div class="section-title">
+                  <h3>お問い合わせ</h3>
+                </div>
+                <div class="contact-form">
+                  <h4>メッセージを送る</h4>
+                  <form>
+                    <div class="error-message"></div>
+                    <input type="text" name="name" placeholder="お名前" class="contact-name">
+                    <div class="error-message"></div>
+                    <input type="text" name="email" placeholder="メールアドレス" class="contact-email">
+                    <div class="error-message"></div>
+                    <textarea name="message" placeholder="メッセージ内容"></textarea>
+                    <button type="submit" class="btn btn-contact">送信</button>
+                  </form>
+                </div>
+                <div class="contact-about">
+                  <h4>About Me</h4>
+                  <p>Progateで飼われている柴犬。忍者の格好をするのが趣味(可愛いさが際立つと思っている)。妖精によって深夜4時半頃に召喚され、それ以来Progateのサイトに居座るように。<br>
+                    Progateでは、ユーザーの癒やしから、学習のサポートまでを担当。また、フィードバック番長も努め、ユーザーにフィードバックを返信しないと毎日22時に怒鳴ってくる。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer>
+            <div class="container">
+              <div class="follow-us">
+                <a href="https://www.facebook.com/Progate-742679992421539" class="social-icon" target='_blank'>
+                  <span class="fa fa-facebook"></span>
+                </a>
+                <a href="https://twitter.com/progatejp" class="social-icon" target='_blank'>
+                  <span class="fa fa-twitter"></span>
+                </a>
+              </div>
+              <div class="copyright">©2016-
+                Progate
+              </div>
+            </div>
+          </footer>
+
+        </div>
+
+    
+  
+  <!-- script.jsの読み込み -->
+  <!-- </body>の直前に書くことで、WEBページの表示速度をより早めることが出来ます。 -->
+  <script src="script.js"></script>
+
+</body>
+</html>

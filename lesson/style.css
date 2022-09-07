@@ -1,0 +1,213 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", Meiryo, Osaka, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 16px;
+}
+
+h3 {
+	color: #663300;
+	border-top: 0px;
+	border-right: 0px;
+	border-bottom: 2px #663300 solid;
+	border-left: 10px #663300 solid;
+	padding: 3px 5px 5px 8px;
+}
+
+pre {
+	background-color: #FFCCCC;
+	font-size: 13px;
+	padding: 0px 0px 16px 20px;
+	margin: 0px;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.answer {
+	border: 1px #663300 solid;
+	padding-left: 20px;
+	margin: 10px 0px 10px 0px;
+}
+
+.answer h5:before {
+	content: "●";
+}
+
+.answer h5 {
+	font-size: 16px;
+	color: #663300;
+	margin: 20px 0px 0px 0px;
+}
+
+.answer p,
+.answer ul {
+	color: #900;
+}
+
+.answer table,
+.answer th,
+.answer td {
+	border: 1px #CCC solid;
+	border-collapse: collapse;
+}
+
+.answer table {
+	margin-bottom: 30px;
+	font-size: 14px;
+}
+
+.answer th {
+	background-color: #CCC;
+	text-align:left;
+}
+
+.answer th {
+	background-color: #CCC;
+	text-align:left;
+}
+
+.answer th,
+.answer td {
+	padding: 5px 15px 5px 15px;
+}
+
+.answer form {
+	margin: 10px 0px 10px 0px;
+}
+
+.explanation {
+	border: 1px #663300 dashed;
+	padding: 10px 20px 20px 20px;
+}
+
+.explanation h6:before {
+	content: "■";
+}
+
+.explanation h6 {
+	font-size: 16px;
+	color: #663300;
+	margin: 20px 0px 10px 0px;
+}
+
+.explanation h4 {
+	border-bottom: 1px #CCC solid;
+	font-size: 16px;
+}
+
+.explanation table,
+.explanation th,
+.explanation td {
+	border: 1px #CCC solid;
+	border-collapse: collapse;
+}
+
+.explanation table {
+	margin-bottom: 30px;
+	font-size: 14px;
+}
+
+.explanation th {
+	background-color: #CCC;
+	text-align:left;
+}
+
+.explanation th {
+	background-color: #CCC;
+	text-align:left;
+}
+
+.explanation th,
+.explanation td {
+	padding: 5px 15px 5px 15px;
+}
+
+.column {
+	border: 1px #CCC solid;
+	padding: 0px 0px 0px 20px;
+	margin-top: 10px;
+}
+
+section {
+	margin-bottom: 50px;
+}
+
+/* lesson5-4 */
+
+#lesson5-4 img {
+	max-width: 100%;
+}
+
+#lesson5-4 .center {
+	margin: 0 auto 0 auto;
+	width: 50%;
+}
+
+#lesson5-4 ul {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	last-style-type: none;
+}
+
+#lesson5-4 li {
+	float: left;
+	margin-right: 1%;
+	width: 24%;
+}
+
+/* lesson5-5 */
+
+#lesson5-5 .slide {
+	margin: 0 auto;
+	border: 1px solid black;
+	width: 720px;
+	background-color: black;
+}
+
+#lesson5-5 img {
+	max-width: 100%;
+}
+
+#lesson5-5 .toolbar {
+	overflow: hidden;
+	text-align: center;
+}
+
+#lesson5-5 .nav {
+	display: inline-block;
+}
+
+#lesson5-5 #prev {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background: url(book-js/5-05_slide/extra/images/prev.png) no-repeat;
+}
+
+#lesson5-5 #next {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background: url(book-js/5-05_slide/extra/images/next.png) no-repeat;
+}
+
+#lesson5-5 #page {
+	display: inline-block;
+	float: left;
+	margin-top: 8px;
+	height: 32px;
+	color: white;
+}
+
+/* lesson6-1 */
+
+#lesson6-1 .submenu p {
+	cursor: pointer;
+}
+
+#lesson6-1 .hidden {
+	display: none;
+}

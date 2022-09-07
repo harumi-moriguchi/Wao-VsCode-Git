@@ -1,0 +1,302 @@
+// 1. 入れ子構造
+.main1 {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f567ae;
+  
+  h1 {
+    color: #f8f8f8;
+    font-size: 34px;
+  }
+
+  p {
+    color: #efefef;
+    font-size: 16px;
+  }
+  // Sassでは1つのセレクタの中に別のセレクタを入れ子にして指定することができます。これにより、同じセレクタを何度も書かなくて良いことになります。
+  
+}
+
+// 2. &記号 (1)
+.main2 {
+  margin: 20px;
+  text-align: center;
+
+  h3 {
+    margin-bottom: 15px;
+    color: #555;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 8px 24px;
+    color: white;
+    opacity: 0.8;
+    border-radius: 4px;
+    background-color: #f778b8;
+    cursor: pointer;
+    box-shadow: 0 5px #e04893;
+
+    &:hover {
+      opacity: 1;
+    }
+    // 入れ子構造を使うことによって、.button:hover を &:hover というように書き換えることができます。
+   
+    &:active {
+      position: relative;
+      top: 7px;
+      box-shadow: none;
+    } 
+    
+  }
+}
+
+// 3. &記号 (2)
+.main3 {
+  margin: 20px;
+  
+  .title {
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #888;
+    color: #555;
+  }
+  
+  li {
+    list-style: none;
+    color: #b5afaf;
+    line-height: 26px;
+    
+    &.current-page {
+      color: #f74c90;
+    }
+    // 「特定要素の指定」は、Sassの&記号を用いると簡単に記述できます。
+  }
+}
+
+// 4.変数
+$wanko-color: #7579a3;// $wanko-colorを指定
+// 変数は使う時より上に指定。利用する範囲の{}内に入れる。
+
+.main4 {
+  margin: 20px;
+  border-radius: 5px;
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 5px;
+    color: $wanko-color;// 色を$wanko-colorに
+  }
+
+  .description {
+    color: #5f6977;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    background-color: $wanko-color;// 背景色を$wanko-colorに
+    display: inline-block;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+// 5.mixin (1)
+// 6.mixin (2)
+@mixin circle($color) {
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 10px;
+  text-align: center;
+  background-color: $color;
+}
+// 複数箇所で呼び出したいコードをmixinでまとめて定義
+// 引数$colorを受け取れるように
+
+.main5 {
+  margin: 20px 10px;
+  color: #ffffff;
+  
+  .small {
+    @include circle(#20efae);
+    width: 34px;
+    height: 34px;
+  }
+  // circleを呼び出し
+  // 引数に「#20efae」を指定
+  
+  .medium {
+    @include circle(#61cbff);
+    width: 62px;
+    height: 62px;
+  }
+  // circleを呼び出し
+  // 引数に「#61cbff」を指定
+  
+  .large {
+    @include circle(#a070f7);
+    width: 90px;
+    height: 90px;
+  }
+  // circleを呼び出し
+  // 引数に「#a070f7」を指定
+
+}
+
+// 7.関数
+$blue: #0ac4ff;
+
+.main6 {
+  margin: 10px;
+  
+  li {
+    list-style: none;
+    float: left;
+    height: 100px;
+    width: 25%;
+    margin-bottom: 10px;
+  }
+  
+  .blue1 {
+    background-color: $blue;
+  }
+  
+  .blue2 {
+    background-color: darken($blue, 10%);// 色を暗くする関数darken
+  }
+  
+  .blue3 {
+    background-color: lighten($blue, 20%);// 色を明るくする関数lighten
+  }
+
+  .blue4 {
+    background-color: rgba($blue, 20%);// 色の不透明度を指定する関数rgba
+  }
+  
+}
+
+// 8.import
+
+@import "_variables.scss";// ファイルを読み込む
+// @import "variables";　と省略可
+
+.main7 {
+  margin: 20px;
+  text-align: center;
+  
+  .title {
+    color: #455b6d;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    display: inline-block;
+    border-radius: 50%;
+    margin: 10px;
+    text-align: center;
+    height: 64px;
+    width: 64px;
+    color: #ffffff;
+    font-size: 32px;
+    box-shadow: 1px 2px 6px rgba(106, 137, 152, 0.3)
+  }
+  
+  .twitter {
+    background-color:$twitter;
+  }// _variables.scssで指定
+  
+  .facebook {
+    background-color:$facebook;
+  }// _variables.scssで指定
+
+}
+
+// 10.プロフィールを作ってみよう
+// 11.mixinを活用する
+// 12.引数を活用する
+// 13.関数を活用してみよう
+// 14.変数をまとめてみよう
+// 15.総合課題
+
+@import "_variables.scss";
+
+@mixin card($color) {
+  padding: 40px 28px;
+	margin: 16px 8px;
+	display: inline-block;
+	border-radius: 3px;
+	background-color: $color;
+
+	img {
+		margin: 16px auto 20px;
+		display: block;
+	}
+
+  a {
+	  padding: 16px 32px;
+		background-color: #ffffff;
+		border-radius: 26px;
+		display: inline-block;
+		color: $color;
+		&:hover {
+			color: #ffffff;
+			background-color: darken($color, 10%);
+		}
+	}
+	
+	h4 {
+	  color: darken($color, 20%);
+	}
+}
+
+.main8 {   
+  min-width: 460px;
+	text-align: center;
+	font-family: "Hiragino Kaku Gothic ProN";
+	background-color: #f0f5fc;
+}
+
+header {
+	width: 100%;
+	padding: 10px 0;
+	display: inline-block;
+	background-color: #7579a3;
+	color: #ffffff;
+	font-size: 14px;
+	text-align: center;
+}
+
+.profile {
+  padding: 56px 0;
+  margin: 0 auto 32px;
+  background-color: #ffffff;
+  .info {
+    margin-top: 16px;
+    p {
+      color: #2b546a;
+    }
+  }
+}
+
+.html {
+  @include card($html);
+}
+
+.javascript {
+  @include card($javascript);
+}
+
+.ruby {
+  @include card($ruby);
+}
+
+footer {
+	margin: 100px 0 32px;
+	color: #2b546a;
+	font-size: 14px;
+	text-align: center;
+}

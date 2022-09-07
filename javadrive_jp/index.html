@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h3 {
+      background: #cef;
+      padding: 6px 5px 5px 10px;
+      margin-top: 50px;
+    }
+    
+    h4 {
+      font-size: 1.05em;
+      border-bottom: solid 1px #9cf;
+      border-left: solid 10px #9cf;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    h5 {
+      font-size: 1em;
+      color: #69c;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .active {
+      color: #c00;
+    }
+
+    .error {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <p>ボタンをクリックするとデータを取得します。</p>
+
+  <form>
+    <input type="button" value="データの取得" onClick="getData()">
+  </form>
+
+  <!-- サーバから受信したテキストをHTMLページ内に表示する -->
+  <div id="result"></div>
+  
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="index.js"></script>
+</body>
+</html>

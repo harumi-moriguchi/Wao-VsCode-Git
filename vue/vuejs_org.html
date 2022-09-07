@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h3 {
+      background: #cef;
+      padding: 6px 5px 5px 10px;
+      margin-top: 50px;
+    }
+    
+    h4 {
+      font-size: 1.05em;
+      border-bottom: solid 1px #9cf;
+      border-left: solid 10px #9cf;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    h5 {
+      font-size: 1em;
+      color: #69c;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .active {
+      color: #c00;
+    }
+
+    .error {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h3>はじめに</h3>
+
+    <h4>宣言的レンダリング1</h4>
+      <div id="counter">
+        1秒毎に1ずつ増やす: {{ counter }}
+      </div>
+      <!-- {{ counter }}　を0にして、1秒毎に1ずつ増やす -->
+
+    <h4>宣言的レンダリング2</h4>
+      <div id="bind-attribute">
+        <span v-bind:title="message">
+          v-bind:title　タイトル属性に書き込むものを指定。数秒マウスオーバーすると、メッセージが出るよ。
+        </span>
+        <!-- v-bind:　title 属性を、 message にする -->
+      </div>
+
+    <h4>ユーザー入力の制御1</h4>
+      <div id="event-handling">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">メッセージを逆にする</button>
+      </div>
+      <!-- v-on　clickして　reverseMessageメソッド　を実行 -->
+
+    <h4>ユーザー入力の制御2</h4>
+      <div id="two-way-binding">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+      </div>
+      <!-- v-model　input　の中に入力した文字に、messageを書き換え -->
+
+    <h4>条件分岐</h4>
+      <div id="conditional-rendering">
+        <span v-if="seen">v-if　seen　が　true　だと表示</span>
+      </div>
+
+    <h4>ループ</h4>
+      <div id="list-rendering">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ol>
+      </div>
+      <!-- v-for　配列todosのデータをループで表示 -->
+
+    <h4>コンポーネントによる構成</h4>
+      <div id="todo-list-app">
+        <ol>
+          <!-- todo-item コンポーネントのインスタンスを生成する -->
+          <!-- 各 todo-item にその内容を表す todo オブジェクトを指定することで、内容が動的に変化します。後述する "key" も各コンポーネントに指定する必要があります。-->
+          <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+          ></todo-item>
+        </ol>
+      </div>
+
+      <!-- コンポーネントを使ったアプリケーションのテンプレート例 -->
+      <div id="app-fx">
+        <app-nav></app-nav>
+        <app-view>
+          <app-sidebar></app-sidebar>
+          <app-content></app-content>
+        </app-view>
+      </div>
+
+  <h3>アプリケーションとコンポーネントのインスタンス</h3>
+
+    <h4>アプリケーションインスタンスの作成</h4>
+      <p>全ての Vue アプリケーションは createApp 関数で新しい アプリケーションインスタンス (application instance) を作成するところから始まります</p>
+      <p>アプリケーションインスタンスは、そのアプリケーション内のコンポーネントが使えるグローバル（コンポーネント、ディレクティブ、プラグインなど）を登録するために使われます。</p>
+      <p>アプリケーションインスタンスが公開するほとんどのメソッドは、チェーンすることができます。</p>
+
+    <h4>ルートコンポーネント</h4>
+      <P>ルートコンポーネントは、アプリケーションを マウント する際に、レンダリングの起点として使われます。</P>
+      <p>アプリケーションは DOM 要素にマウントする必要があります。</p>
+
+      <p>実際の多くのアプリケーションでは再利用可能なコンポーネントを入れ子にしたツリー状に構成されています。</p>
+      <p>とりあえず、 ルートコンポーネントは他のコンポーネントとはなにも違いはないことを認識しておいてください。</p>
+
+  <h3>テンプレート構文</h3>
+
+    <h4>展開　テキスト</h4>
+      <p>データバインディングのもっとも基本的な形は、"Mustache" 構文(二重中括弧)を利用したテキスト展開です</p>
+      <span>Message: {{ msg }}</span>
+
+      <p>v-once ディレクティブを使用することで、データ変更時の更新はおこなわず、一度だけ展開することができます。ただし、同じノードのあらゆる他のバインディングが影響を受けることに注意してください。</p>
+      <span v-once>This will never change: {{ msg }}</span>
+
+    <h4>展開　生の HTML</h4>
+      <p>2 重中括弧の mustaches は、データを HTML ではなく、プレーンなテキストとして扱います。実際の HTML として出力するためには、<strong>v-html ディレクティブ</strong> を使用する必要があります。</p>
+      <div id="example1" class="demo">
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+      </div>
+
+    <h4>展開　属性</h4>
+      <p>Mustache は、HTML 属性の内部で使用することはできません。代わりに、<strong>v-bind ディレクティブ</strong>を使用してください</p>
+      <div v-bind:id="dynamicId"></div>
+      <p>属性が単に存在していることを true と示すといった真偽値属性の場合、v-bind は少し異なった働きをします。</p>
+      <button v-bind:disabled="isButtonDisabled">Button</button>
+      <p>isButtonDisabled が真の値をもつ場合、 disabled 属性は含められます。また、 &lt;button disabled=""&gt; との整合性を保つために、値が空文字である場合も含まれます。その他の偽の値の場合、この属性は省略されます。</p>
+
+    <h4>展開　JavaScript 式の使用</h4>
+      <p>Vue.js は全てのデータバインディング内部で JavaScript 式を完全にサポートします</p>
+      {{ number + 1 }}
+      {{ ok ? 'YES' : 'NO' }}
+      {{ message.split('').reverse().join('') }}
+      <div v-bind:id="'list-' + id"></div>
+
+      <p>制限として、それぞれのバインディングは、<strong>単一の式だけ含むことができる</strong>というものです。なので、以下は動作しません</p>
+      <p>これは文であり、式ではありません</p>
+      {{ var a = 1 }}
+      <p>フロー制御はいずれも動作しません。三項演算子を使用してください。</p>
+      {{ if (ok) { return message } }}
+
+    <h4>ディレクティブ　引数</h4>
+      <p>ディレクティブは v- から始まる特別な属性です。</p>
+      <p>ディレクティブの中には "引数" を取るものもあります。これはディレクティブ名の後にコロンで表記します。例えば、<strong>v-bind ディレクティブ</strong>は、リアクティブに HTML 属性を更新します。</p>
+      &lt;a v-bind:href="url"&gt; ... &lt;/a&gt;
+      <p><strong>v-on ディレクティブ</strong>を見てみましょう。これは DOM イベントを受け取ります。</p>
+      &lt;a v-on:click="doSomething"&gt; ... &lt;/a&gt;
+
+    <h4>ディレクティブ　動的引数</h4>
+      <p><strong>角括弧で囲む</strong>ことで JavaScript 式をディレクティブの引数に使うこともできます。</p>
+      <p>動的引数にはいくつかの制約がある点に注意してください。</p>
+      &lt;a v-bind:[attributeName]="url"&gt; ... &lt;/a&gt;
+      <p>ここで attributeName は JavaScript 式として動的に評価され、その評価結果が引数の最終的な値として使われます。</p>
+      <p>同様に、動的なイベント名にハンドラをバインドするために動的引数を使うこともできます。</p>
+      &lt;a v-on:[eventName]="doSomething"&gt; ... &lt;/a&gt;
+
+    <h4>ディレクティブ　修飾子</h4>
+      <p>修飾子 (Modifier) はドットで表記された特別な接尾語で、ディレクティブが特別な方法でバインドされるということを示します。</p>
+      <p>例えば <strong>.prevent 修飾子</strong>は v-on ディレクティブに、イベントがトリガされた際 event.preventDefault() を呼ぶように伝えます。</p>
+      &lt;form v-on:submit.prevent="onSubmit"&gt;...&lt;/form&gt;
+
+    <h4>省略記法　v-bind 省略記法</h4>
+      <p>Vue は 2 つの最もよく使われるディレクティブ v-bind と v-on に対して特別な省略記法を提供しています。</p>
+      <p>完全な構文</p>
+      &lt;a v-bind:href="url"&gt; ... &lt;/a&gt;
+      <p>省略記法</p>
+      &lt;a :href="url"&gt; ... &lt;/a&gt;
+      <p>動的引数の省略記法</p>
+      &lt;a :[key]="url"&gt; ... &lt;/a&gt;
+
+    <h4>テンプレート構文　省略記法　v-on 省略記法</h4>
+      <p>完全な構文</p>
+      &lt;a v-on:click="doSomething"&gt; ... &lt;/a&gt;
+      <p>省略記法</p>
+      &lt;a @click="doSomething"&gt; ... &lt;/a&gt;
+      <p>動的引数の省略記法</p>
+      &lt;a @[event]="doSomething"&gt; ... &lt;/a&gt;
+
+    <h4>テンプレート構文　省略記法　注意事項</h4>
+      <p>動的引数の式には構文上の制約があります。というのも、スペースや引用符のような一部の文字は、HTML の属性名としては不正な文字だからです。例えば、これはコンパイラ警告を引き起こします。</p>
+      &lt;a v-bind:['foo' + bar]="value"&gt; ... &lt;/a&gt;
+      <p>回避策は複雑な式を算出プロパティで置き換える方法です、Vue の最も基本的な機能の 1 つであり後ほど説明します。</p>
+
+      <p>in-DOM テンプレート (すなわち、HTML ファイルに直接書かれるテンプレート) を使う場合、ブラウザが強制的に属性名を小文字にするため、キー名を大文字にするのは避けるべきです。</p>
+      <p>in-DOM テンプレートの中では、v-bind:[someattr] に変換されます。インスタンスに "someattr" プロパティがない場合、このコードは動作しません。</p>
+      &lt;a v-bind:[someAttr]="value"&gt; ... &lt;/a&gt;
+
+      <p>JavaScript 式 の制約</p>
+      <p>テンプレート式はサンドボックス化されていて、 Math や Date といった グローバルオブジェクトの制限リスト (opens new window)にだけアクセスできます。テンプレート式内で<strong>ユーザーが定義したグローバルオブジェクトにアクセスしようとしてはいけません。</strong></p>
+
+  <h3>データプロパティとメソッド</h3>
+    <h4>データプロパティ</h4>
+      <p>トップレベルの data プロパティの名前に、$ や _ の文字からはじまる名前を使うことは避けるべきです。</p>
+
+    <h4>メソッド</h4>
+      <p>コンポーネントのインスタンスにメソッドを追加するには、 methods オプションを使います。これは必要なメソッドを含むオブジェクトでなければなりません。</p>
+      <div id="app7">
+        <p>1秒毎に1ずつ増やす: {{ count }}</p>
+        <button @click="increment">Up vote</button>
+      </div>
+
+      <p>テンプレートから直接メソッドを呼び出すこともできます。</p>
+      <p>テンプレートが JavaScript の式をサポートしていれば、どこでもメソッドを呼び出すことができます</p>
+      <!-- <span :title="toTitleDate(date)">
+        {{ formatDate(date) }}
+      </span> -->
+
+      <h5>Debounce (デバウンス) と Throttle (スロットル)</h5>
+        <p>Vue は、 Debounce や Throttle のサポートが組み込まれていませんが、 Lodash (opens new window)などのライブラリを使って実装することができます。</p>
+        <p>コンポーネントが一度しか使われない場合には、 methods の中で直接 Debounce を適用することができます</p>
+
+        <!-- <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
+        <script>
+          Vue.createApp({
+            methods: {
+              // Lodash による Debounce
+              click: _.debounce(function() {
+                // ... クリックに反応 ...
+              }, 500)
+            }
+          }).mount('#app')
+        </script> -->
+
+        <p>しかし、この方法ではコンポーネントが再利用される場合に、すべてのコンポーネントが同じ Debounce 関数を共有するため、問題が起きる可能性があります。コンポーネントのインスタンスをお互いに独立させるために、 created ライフサイクルフックに Debounce 関数を追加することができます</p>
+
+  <h3>算出プロパティとウォッチャ</h3>
+
+    <h4>算出プロパティ</h4>
+
+      <h5>算出プロパティ 基本的な例</h5>
+        <p>ここでは publishedBooksMessage という算出プロパティを宣言しています。</p>
+        <div id="computed-basics">
+          <p>書籍を出版しています:</p>
+          <span>{{ publishedBooksMessage }}</span>
+        </div>
+
+      <h5>算出プロパティ vs メソッド</h5>
+        <div id="computed-basics2">
+          <p>書籍を出版しています:</p>
+          <span>{{ calculateBooksMessage() }}</span>
+        </div>
+        <p>キャッシングをしたくない場合は、代わりに method を使用してください。</p>
+
+      <h5>算出 Setter 関数</h5>
+        <p>算出プロパティはデフォルトでは getter 関数のみですが、必要に応じて setter 関数を設定することもできます</p>
+
+
+    <h4>ウォッチャ</h4>
+      <div id="watch-example">
+        <p>
+          質問して a yes/no question:
+          <input v-model="question" />
+        </p>
+        <p>{{ answer }}</p>
+      </div>
+
+      <p>ajax ライブラリや汎用ユーティリティメソッドのコレクションなどの豊富なエコシステムがすでに存在するため、それらを再発明しないことで Vue のコアは小規模なまま保たれています。これは、使い慣れたものを自由に使うことができる、ということでもあります。</p>
+      <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+
+
+      <h5>算出プロパティ vs 監視プロパティ</h5>
+        <div id="demo">{{ fullName }}</div>
+        <div id="demo2">{{ fullName }}</div>
+
+
+  <h3>クラスとスタイルのバインディング</h3>
+
+    <h4>HTML クラスのバインディング</h4>
+
+      <h5>オブジェクト構文</h5>
+        <p>:class (v-bind:class の略) にオブジェクトを渡すことでクラスを動的に切り替えることができます:</p>
+        <div id="html-binding">
+          <div class="static" :class="{ active: isActive, 'text-danger': hasError }">isActive が真ならクラスに active を追加</div>
+          <div :class="classObject">束縛されるオブジェクトはインラインでなくてもかまいません。</div>
+          <div :class="classObject2">オブジェクトを返す 算出プロパティ に束縛することもできます。これは一般的で強力なパターンです。</div>
+        </div>
+
+      <h5>配列構文</h5>
+        <div id="html-binding2">
+          <div :class="[activeClass, errorClass]">:class に配列を渡してクラスのリストを適用することができます。</div>
+          <div :class="[isActive ? activeClass : '', errorClass]">errorClass は常に適用されますが、activeClass クラスは isActive が真と評価されるときだけ適用されます。</div>
+          <div :class="[{ active: isActive }, errorClass]">しかしながら、これでは複数の条件つきクラスがあると少し冗長になってしまいます。そのため、配列構文の内部ではオブジェクト構文を使うこともできます。</div>
+        </div>
+
+      <h5>コンポーネントにおいて</h5>
+        <p>単一のルート要素を持つカスタムコンポーネントで class 属性を使用すると、それらのクラスがこの要素に追加されます。この要素の既存のクラスは上書きされません。</p>
+        <div id="app8">
+          <my-component class="baz boo">テンプレートが読み込みされます</my-component>
+          <my-component :class="{ active: isActive }">isActive が真と評価されるときはクラスが追加されます。</my-component>
+          <my-component2 class="baz">$attrs コンポーネントプロパティ</my-component2>
+        </div>
+
+    <h4>インラインスタイルのバインディング</h4>
+
+      <h5>オブジェクト構文</h5>
+        <p>:style 向けのオブジェクト構文は非常に簡単です。JavaScript オブジェクトということを除けば、ほとんど CSS のように見えます。CSS のプロパティ名には、キャメルケース (camelCase) またはケバブケース (kebab-case: クォートとともに使うことになります) のどちらでも使用することができます</p>
+      <h5>配列構文</h5>
+
+      <h5>自動プレフィックス</h5>
+        <p>:style で ベンダープレフィックスが必要な CSS プロパティを使用するとき、Vue は自動的に適切なプレフィックスを追加します。</p>
+
+      <h5>複数の値</h5>
+        <p>style プロパティに複数の (接頭辞付き) 値の配列を設定できます。</p>
+        <p>これは、配列内でブラウザがサポートしている最後の値だけをレンダリングします。</p>
+
+        <div id="app9">
+          <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">:style 向けのオブジェクト構文は非常に簡単です。</div>
+          <div :style="styleObject">テンプレートをクリーンにするために、styleObjectに束縛するのは、よいアイディアです。</div>
+          <div :style="[baseStyles, overridingStyles]">:style 向けの配列構文は、同じ要素に複数のスタイルオブジェクトを適用することができます。</div>
+          <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">display: ['-webkit-box', '-ms-flexbox', 'flex']の配列内でブラウザがサポートしている最後の値だけをレンダリングします。</div>
+        </div>
+
+
+  <h3>条件付きレンダリング</h3>
+
+    <h4>v-if</h4>
+      <p>v-if ディレクティブは、ブロックを条件に応じてレンダリングしたい場合に使用されます。ブロックは、ディレクティブの式が真を返す場合のみレンダリングされます。v-else で "else ブロック" を追加することも可能です。</p>
+
+      <h5>template での v-if による条件グループ</h5>
+        <p>非表示ラッパー (wrapper) として提供される、template 要素で v-if を使用できます。最終的にレンダリングされる結果は、template 要素は含まれません。</p>
+
+      <h5>v-else</h5>
+        <p>v-if に対して "else block" を示すために、v-else ディレクティブを使用できます。v-else 要素は、v-if または v-else-if 要素の直後になければなりません。それ以外の場合は認識されません。</p>
+
+      <h5>v-else-if</h5>
+        <p>v-else-if は、名前が示唆するように、v-if の "else if block" として機能します。また、複数回連結することもできます。</p>
+
+      <h5>v-show</h5>
+        <p>条件的に要素を表示するための別のオプションは v-show です。使用方法はほとんど同じです。</p>
+        <p>違いは v-show による要素は常レンダリングされて DOM に維持するということです。v-show はシンプルに要素の display CSS プロパティを切り替えます。v-show は template 要素をサポートせず、v-else とも連動しないということに注意してください。</p>
+
+      <h5>v-if vs v-show</h5>
+        <p>v-if は 遅延レンダリング (lazy) です。 条件付きブロックは、条件が最初に true になるまでレンダリングされません。一方で、v-show はとてもシンプルです。要素は初期条件に関わらず常にレンダリングされ、シンプルな CSS ベースの切り替えとして保存されます。そのため、とても頻繁に何かを切り替える必要があれば v-show を選び、条件が実行時に変更することがほとんどない場合は、v-if を選びます。</p>
+
+      <h5>v-if と v-for</h5>
+        <p>v-if と v-for を同時に利用することは 推奨されません。</p>
+        <p>v-if と v-for が同じ要素に両方つかわれる場合、 v-if が先に評価されます。</p>
+
+      <div id="app10">
+        <p v-if="awesome">Vue is awesome!</p>
+        <p v-else>Oh no 😢</p>
+
+        <template v-if="ok">
+          <h6>Title</h6>
+          <p>Paragraph 1</p>
+          <p>Paragraph 2</p>
+        </template>
+
+        <div v-if="Math.random() > 0.5">
+          Math.random()が0.5より大きい
+        </div>
+        <div v-else>
+          Math.random()が0.5以下
+        </div>
+
+        <div v-if="type === 'A'">
+          type === 'A'
+        </div>
+        <div v-else-if="type === 'B'">
+          type === 'B'
+        </div>
+        <div v-else-if="type === 'C'">
+          type === 'C'
+        </div>
+        <div v-else>
+          Not A/B/C
+        </div>
+
+        <h6 v-show="vShow">v-show="vShow"</h6>
+      </div>
+  
+  
+  <h3>リストレンダリング</h3>
+
+    <h4>v-for で配列に要素をマッピングする</h4>
+      <p>配列に基づいて、アイテムのリストをレンダリングするために、v-for ディレクティブを使用することができます。</p>
+
+      <ul id="array-rendering">
+        <li v-for="item in items">
+          {{ item.message }}
+        </li>
+      </ul>
+      
+      <p>v-for ブロック内では、親スコープのプロパティへの完全なアクセスを持っています。また v-for は現在のアイテムに対する配列のインデックスを、任意の 2 つ目の引数としてサポートしています。</p>
+
+      <ul id="array-with-index">
+        <li v-for="(item, index) in items">
+          {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+      </ul>
+
+      <p>区切り文字として in の代わりに of を使用することができます。</p>
+
+    <h4>オブジェクトの v-for</h4>
+      <p>オブジェクトのプロパティに対して、v-for を使って反復処理することもできます。</p>
+
+      <ul id="v-for-object" class="demo">
+        <li v-for="value in myObject">
+          {{ value }}
+        </li>
+      </ul>
+
+      <ul id="v-for-object2" class="demo">
+        <li v-for="(value, name) in myObject">
+          {{ name }}: {{ value }}
+        </li>
+      </ul>
+
+      <ul id="v-for-object3" class="demo">
+        <li v-for="(value, name, index) in myObject">
+          {{ index }}. {{ name }}: {{ value }}
+        </li>
+      </ul>
+
+    <p>※オブジェクトを反復処理するとき、順序は Object.keys() の列挙順のキーに基づいており、全ての JavaScript エンジンの実装で一貫性が保証されていません。</p>
+
+    <h4>状態の維持</h4>
+      <p>繰り返される DOM の内容が単純な場合や、性能向上のためにデフォルトの動作を意図的に頼る場合を除いて、可能なときはいつでも v-for に key 属性を与えることが推奨されます。</p>
+      <p>オブジェクトや配列のような非プリミティブ値を v-for のキーとして使わないでください。代わりに、文字列や数値を使ってください。</p>
+
+    <h4>配列の変化を検出</h4>
+      <h5>変更メソッド</h5>
+        <p>Vue は画面の更新もトリガするために、監視された配列の変更メソッドをラップします。ラップされたメソッドは次のとおりです</p>
+        <p>push()　pop()　shift()　unshift()　splice()　sort()　reverse()</p>
+
+      <h5>配列の置き換え</h5>
+        <p>変更メソッドは、名前が示唆するように、それらが呼ばれると元の配列を変更します。一方で、変更しないメソッドもあります。例えば、filter()、concat()、slice() は、元の配列を変更せず、常に新しい配列を返します。これらのメソッドを使用する場合は、新しいもので古い配列を置き換えることで変更できます</p>
+
+    <h4>フィルタ/ソートされた結果の表示</h4>
+      <p>元のデータを実際に変更またはリセットせずに、フィルタリングやソートされたバージョンの配列を表示したいことがあります。このケースでは、フィルタリングやソートされた配列を返す算出プロパティを作ることができます。</p>
+
+      <ul id="numbers-filter" class="demo">
+        <li v-for="n in evenNumbers" :key="n">偶数だけ抽出：{{ n }}</li>
+      </ul>
+
+      <p>算出プロパティが使えない状況ではメソッドを使うこともできます。(例: 入れ子になった v-for のループの中)</p>
+
+      <div id="numbers-filter2" class="demo">
+        <ul v-for="numbers in sets">
+          <li v-for="n in even(numbers)" :key="n">偶数だけ抽出：{{ n }}</li>
+        </ul>
+      </div>
+
+    <h4>範囲付き v-for</h4>
+      <p>v-for は整数値を取ることもできます。このケースでは、指定された数だけテンプレートが繰り返されます。</p>
+
+      <div id="range" class="demo">
+        <span v-for="n in 10" :key="n">n in 10の整数値：{{ n }} 、</span>
+      </div>
+
+    <h4>template での v-for</h4>
+
+      <p>テンプレート v-if と同様に、複数の要素のブロックをレンダリングするために、 v-for で template タグを使うこともできます。例:</p>
+
+      <div id="template-vfor" class="demo">
+        <ul>
+          <template v-for="item in items" :key="item.msg">
+            <li>{{ item.msg }}</li>
+            <li class="divider" role="presentation">{{ parentMessage }}</li>
+          </template>
+        </ul>
+      </div>
+
+    <h4>v-for と v-if</h4>
+      <p>v-if と v-for を同時に利用することは推奨されません。</p>
+      <p>同じノードに存在するとき、 v-if は v-for よりも高い優先度を持ちます。つまり v-if の条件は、 v-for のスコープの変数にはアクセスできないということです。</p>
+      <p>これは v-for を template タグで囲み、移動させることで修正できます。</p>
+
+      <ul id="vfor-and-vif" class="demo">
+        <!-- インスタンスに "todo" プロパティが定義されていないため、エラーが発生します。 -->
+        <!-- <li v-for="todo in todos" v-if="!todo.isComplete">
+          {{ todo.name }}
+        </li> -->
+        <template v-for="todo in todos" :key="todo.name">
+          <li v-if="!todo.isComplete">
+            {{ todo.name }}
+          </li>
+        </template>
+      </ul>
+
+      <p>todoがコンプリートされていなかったら表示。みたいな時使う。</p>
+
+    <h4>コンポーネントと v-for</h4>
+      
+  
+
+
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="vuejs_org.js"></script>
+</body>
+</html>
