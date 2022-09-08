@@ -21,7 +21,7 @@ request.onreadystatechange = function(){
 
 // HTTPリクエストを初期化する(open)
 // open(メソッド, URL[, 非同期[, ユーザー名[, パスワード]]])
-request.open('GET', 'connect_high-exam.tsv', true);
+request.open('GET', 'https://jimmy-waiwai.github.io/Wao-VsCode-Git/javadrive_jp/data.txt', true);
 
 // HTTPリクエストをサーバーに送信する(send)
 // GET メソッドを使用する場合は通常データはサーバに送信しないので null を指定します。
