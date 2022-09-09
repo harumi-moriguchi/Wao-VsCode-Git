@@ -1,4 +1,4 @@
-import data from "data.csv";
+import data from "https://jimmy-waiwai.github.io/Wao-VsCode-Git/javascript-fetch/data.csv";
 
 export default {
   data() {
