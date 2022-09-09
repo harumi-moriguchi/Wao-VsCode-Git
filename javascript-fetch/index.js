@@ -1,8 +1,19 @@
-/* window.addEventListener('DOMContentLoaded', function(){
+import data from "data.csv";
 
-  fetch('https://jimmy-waiwai.github.io/Wao-VsCode-Git/javascript-fetch/data.json') // (1) リクエスト送信
-  .then(response => response.json()) // (2) レスポンスデータを取得
-  .then(data => console.log(data));
-}); */
-
-(await fetch("https://jimmy-waiwai.github.io/Wao-VsCode-Git/javascript-fetch/data.json")).json();
+export default {
+  data() {
+    return {
+      result: []
+    };
+  },
+  created() {
+    fetch(data)
+      .then(res => res.text())
+      .then(data => (this.result = this.convertCsvStringToArray(data)));
+  },
+  methods: {
+    convertCsvStringToArray(str) {
+      return str.split("\n").map(s => s.split(","));
+    }
+  }
+};
