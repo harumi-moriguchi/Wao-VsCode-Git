@@ -34,6 +34,33 @@
     .error {
       font-size: 20px;
     }
+
+    .error-alert-box {
+      padding: 10px 20px;
+      background: #f3beb8;
+      border: 1px solid #f09898;
+    }
+
+    .tab-button {
+      padding: 6px 10px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #f0f0f0;
+      margin-bottom: -1px;
+      margin-right: -1px;
+    }
+    .tab-button:hover {
+      background: #e0e0e0;
+    }
+    .tab-button.active {
+      background: #e0e0e0;
+    }
+    .demo-tab {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
@@ -210,8 +237,8 @@
     <h4>メソッド</h4>
       <p>コンポーネントのインスタンスにメソッドを追加するには、 methods オプションを使います。これは必要なメソッドを含むオブジェクトでなければなりません。</p>
       <div id="app7">
-        <p>1秒毎に1ずつ増やす: {{ count }}</p>
-        <button @click="increment">Up vote</button>
+        <p>クリック毎に2ずつ増やす: {{ count }}</p>
+        <button @click="increment">値を増やす</button>
       </div>
 
       <p>テンプレートから直接メソッドを呼び出すこともできます。</p>
@@ -496,8 +523,479 @@
       <p>todoがコンプリートされていなかったら表示。みたいな時使う。</p>
 
     <h4>コンポーネントと v-for</h4>
-      
+
+      <p>通常の要素のように、カスタムコンポーネントで直接 v-for を使うことができます</p>
+
+      <my-component v-for="item in items" :key="item.id"></my-component>
+
+      <p>これは、単純な ToDo リストの完全な例です</p>
+
+      <div id="todo-list-example">
+        <form v-on:submit.prevent="addNewTodo">
+        <!-- 意図しない画面遷移、画面更新を避けるため.preventが有効 -->
+        <!-- addNewTodo　を　methods:に指定 -->
+          <label for="new-todo">todoを追加</label>
+          <!-- labelの　for="new-todo"　と　inputのid="new-todo"を紐づけている -->
+          <input
+            v-model="newTodoText"
+            id="new-todo"
+            placeholder="初期表示スペース"
+          />
+          <button>追加</button>
+        </form>
+        <ul>
+          <todo-item
+            v-for="(todo, index) in todos"
+            :key="todo.id"
+            :title="todo.title"
+            @remove="todos.splice(index, 1)"
+          ></todo-item>
+          <!-- app.componentに指定 -->
+          <!-- indexから要素を1つ取り除く -->
+        </ul>
+      </div>
+
+  <h3>イベントハンドリング</h3>
+    <h4>イベントの購読</h4>
+      <p>v-on ディレクティブを使うことで、DOM イベントの購読、イベント発火時の JavaScript の実行が可能になります。これは通常 @ に省略することができます。v-on:click="methodName" もしくは @click="methodName" と書いて使用します。</p>
+
+      <div id="basic-event">
+        <button @click="counter += 1">1加える</button>
+        <p>上のボタンが {{ counter }} 回クリックされました。</p>
+      </div>
+
+    <h4>メソッドイベントハンドラ</h4>
+      <p>v-on は呼び出したいメソッドの名前も受け付けます。</p>
+
+      <div id="event-with-method">
+        <!-- `greet` は、あらかじめ定義したメソッドの名前 -->
+        <button @click="greet">あいさつ</button>
+      </div>
+    
+    <h4>インラインメソッドハンドラ</h4>
+      <p>メソッド名を直接指定する代わりに、インライン JavaScript 式でメソッドを指定することもできます</p>
+
+      <div id="inline-handler">
+        <button @click="say('こんにちは')">こんにちは</button>
+        <button @click="say('何ですか')">何ですか</button>
+      </div>
+
+      <button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+
+    <h4>複数イベントハンドラ</h4>
+      <p>イベントハンドラ内ではカンマで区切ることで、複数のメソッドを設定することができます</p>
+
+      <!-- ボタンをクリックすると、one（）とtwo（）の両方が実行されます -->
+      <button @click="one($event), two($event)">Submit</button>
   
+    <h4>イベント修飾子</h4>
+      <p>Vue は v-on のために イベント修飾子(event modifiers) を提供しています。</p>
+      <h5>.stop</h5>
+      <p>クリックイベントの伝搬が止まります</p>
+      <a @click.stop="doThis"></a>
+
+      <h5>.prevent</h5>
+      <p>submit イベントによってページがリロードされません</p>
+      <form @submit.prevent="onSubmit"></form>
+      <p>修飾子は繋げることができます。順序にも注意。</p>
+      <a @click.stop.prevent="doThat"></a>
+      <p>値を指定せず、修飾子だけ利用することもできます</p>
+      <form @submit.prevent></form>
+
+      <h5>.capture</h5>
+      <p>イベントリスナを追加するときにキャプチャモードで使います</p>
+      <p>言い換えれば、内部要素を対象とするイベントは、その要素によって処理される前にここで処理されます</p>
+      <div @click.capture="doThis">...</div>
+      
+      <h5>.self</h5>
+      <p>event.target が要素自身のときだけ、ハンドラが呼び出されます。言い換えると子要素のときは呼び出されません</p>
+      <div @click.self="doThat">...</div>
+      
+      <h5>.once</h5>
+      <p>最大1回、クリックイベントはトリガされます</p>
+      <a @click.once="doThis"></a>
+
+      <h5>.passive</h5>
+      <p>`onScroll` が `event.preventDefault()` を含んでいたとしても、スクロールイベントのデフォルトの挙動(つまりスクロール)は、イベントの完了を待つことなくただちに発生するようになります</p>
+      <div @scroll.passive="onScroll">...</div>
+
+    <h4>キー修飾子</h4>
+      <p>キーボードイベントを購読するにあたって、特定のキーのチェックが必要になることがあります。Vue では、v-on または @ に対してキー修飾子を追加することができます。</p>
+
+      <!-- `key` が `Enter` のときだけ、`vm.submit()` が呼ばれます  -->
+      <input @keyup.enter="submit" />
+
+      <p>KeyboardEvent.key (opens new window)で公開されている任意のキー名は、ケバブケースに変換することで修飾子として直接使用できます。</p>
+
+      <input @keyup.page-down="onPageDown" />
+
+      <p>上の例では、ハンドラは $event.key が 'PageDown' に等しい場合だけ呼ばれます。</p>
+
+      <h5>キーコード</h5>
+        <p>Vue は最も一般的に使用されるキーコードのエイリアスを提供しています。</p>
+        <ul>
+          <li>.enter</li>
+          <li>.tab</li>
+          <li>.delete ("Delete" と "Backspace" キー両方をキャプチャします)</li>
+          <li>.esc</li>
+          <li>.space</li>
+          <li>.up</li>
+          <li>.down</li>
+          <li>.left</li>
+          <li>.right</li>
+        </ul>
+
+    <h4>システム修飾子キー</h4>
+      <p>次の修飾子を使用すると、対応するキーが押されたときにのみマウスもしくはキーボードのイベントリスナをトリガできます。</p>
+      <ul>
+        <li>.ctrl</li>
+        <li>.alt</li>
+        <li>.shift</li>
+        <li>.meta</li>
+      </ul>
+
+      <!-- Alt + Enter -->
+      <input @keyup.alt.enter="clear" />
+
+      <!-- Ctrl + Click -->
+      <div @click.ctrl="doSomething">Do something</div>
+
+      <h5>.exact 修飾子</h5>
+        <p>.exact 修飾子はイベントを引き起こすために必要なシステム修飾子の正確な組み合わせを制御します。</p>
+
+        <!-- これは Ctrl に加えて Alt や Shift キーが押されていても発行されます -->
+        <button @click.ctrl="onClick">A</button>
+
+        <!-- これは Ctrl キーが押され、他のキーが押されてないときだけ発行されます -->
+        <button @click.ctrl.exact="onCtrlClick">A</button>
+
+        <!-- これは システム修飾子が押されてないときだけ発行されます -->
+        <button @click.exact="onClick">A</button>
+
+      <h5>マウスボタンの修飾子</h5>
+        <p>これらの修飾子は、イベントのトリガのハンドリングを、特定のマウスのボタンのみに制限します。</p>
+
+        <ul>
+          <li>.left</li>
+          <li>.right</li>
+          <li>.middle</li>
+        </ul>
+
+    <h4>なぜ HTML にリスナを記述するのですか</h4>
+      <p>実際、v-on または @ を利用することでいくつかの利点があります。</p>
+
+      <ol>
+        <li>HTML テンプレートを眺めることで、JS コード内のハンドラ関数を探すことを容易にします。</li>
+        <li>JS 内のイベントリスナを手作業でアタッチする必要がないので、ViewModel を DOM 依存のない純粋なロジックにできます。これはテスタビリティを向上させます。</li>
+        <li>ViewModel が消去されるときに、すべてのイベントリスナは自動で削除されます。手動でそれらの消去をおこなうことを気にする必要はありません。</li>
+      </ol>
+
+
+  <h3>フォーム入力バインディング</h3>
+    <h4>基本的な使い方</h4>
+      <p>form の input 要素や textarea 要素、 select 要素に双方向データバインディングを付与するためには、v-model を使用することができます。</p>
+      <p>v-model はフォーム要素の value 属性や checked 属性、selected 属性の初期値を無視します。初期値の宣言は JavaScript 側、コンポーネントの data オプション内で行ってください。</p>
+
+      <p>内部的には、v-model は異なる input 要素に対し異なるプロパティを使用し、異なるイベントを送出します。</p>
+      <ul>
+        <li>text および textarea 要素には、value プロパティと input イベントを用います</li>
+        <li>チェックボックスおよびラジオボタンには、checked プロパティと change イベントを用います</li>
+        <li>select フィールドには、value プロパティと change イベントを用います</li>
+      </ul>
+      <p>IME (opens new window)を必要とする言語 (中国語、日本語、韓国語など) においては、IME による入力中に v-model が更新を行わないことに気づくでしょう。このような更新にも対応したい場合、 v-model をつかう代わりに input イベントリスナと value のバインディングを使ってください。</p>
+
+      <h5>テキスト</h5>
+
+        <div id="v-model-basic">
+          メッセージ：<input v-model="message" placeholder="ここに記入" />
+          <p>メッセージは「{{ message }}」です。</p>
+        </div>
+
+      <h5>複数行テキスト</h5>
+
+        <div id="v-model-textarea">
+          <span>複数行のメッセージを書いてください</span>
+          <p style="white-space: pre-line;">{{ message }}</p>
+          <br />
+          <p>style="white-space: pre-line;" で、改行が反映されているよ。</p>
+          <textarea v-model="message" placeholder="ここに複数行のメッセージを記入"></textarea>
+        </div>
+
+      <h5>チェックボックス</h5>
+
+        <p>単一のチェックボックスと boolean 値</p>
+        <div id="v-model-checkbox">
+          <input type="checkbox" id="checkbox" v-model="checked" />
+          <label for="checkbox">{{ checked }}</label>
+        </div>
+
+        <p>同じ配列にバインドされた複数のチェックボックス</p>
+        <div id="v-model-multiple-checkboxes">
+          <input type="checkbox" id="jack" value="太郎" v-model="checkedNames" />
+          <label for="jack">太郎</label>
+          <input type="checkbox" id="john" value="次郎" v-model="checkedNames" />
+          <label for="john">次郎</label>
+          <input type="checkbox" id="mike" value="花子" v-model="checkedNames" />
+          <label for="mike">花子</label>
+          <br />
+          <span>チェックした名前: {{ checkedNames }}</span>
+        </div>
+
+      <h5>ラジオ</h5>
+
+        <div id="v-model-radiobutton">
+          <input type="radio" id="one" value="チョコレート" v-model="picked" />
+          <label for="one">チョコレート</label>
+          <br />
+          <input type="radio" id="two" value="アイスクリーム" v-model="picked" />
+          <label for="two">アイスクリーム</label>
+          <br />
+          <span>選択したもの: {{ picked }}</span>
+        </div>
+
+      <h5>セレクト</h5>
+
+        <p>単一のセレクト</p>
+        <div id="v-model-select">
+          <select v-model="selected">
+            <option disabled value="">一つ選んでください。</option>
+            <option>うさぎ</option>
+            <option>きりん</option>
+            <option>くま</option>
+          </select>
+          <p>選んだもの: {{ selected }}</p>
+        </div>
+        <p>v-model の式の初期値がいずれのオプションとも一致しない場合、iOS では最初のアイテムが選択できなくなります。したがって、上記の例で示したように、value を持たない disabled なオプションを追加しておくことをおすすめします。</p>
+
+        <p>複数個のセレクト（配列にバインド）</p>
+        <div id="v-model-select2">
+          <select v-model="selected" multiple>
+            <option>うどん</option>
+            <option>そば</option>
+            <option>パスタ</option>
+          </select>
+          <p>選んだもの（複数選択可）: {{ selected }}</p>
+        </div>
+        <p>multiple は複数の選択肢を選択できるようにする属性。</p>
+
+        <p>動的なオプションを v-for によりレンダリング</p>
+        <div id="v-model-select-dynamic">
+          <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          <p>選んだもの: {{ selected }}</p>
+        </div>
+
+    <h4>値のバインディング</h4>
+      <p>ラジオやチェックボックス、セレクトの option において、v-model でバインディングされる値は通常は静的な文字列（チェックボックスの場合は boolean も）です。</p>
+
+      <!-- チェックされているとき`picked` は文字列"a"になります -->
+      <input type="radio" v-model="picked" value="a" />
+
+      <!-- `toggle` は true または false のどちらかです -->
+      <input type="checkbox" v-model="toggle" />
+
+      <!-- 最初のオプションが選択されているとき`selected` は文字列"abc"です -->
+      <select v-model="selected">
+        <option value="abc">ABC</option>
+      </select>
+
+      <p>しかし、現在アクティブなインスタンスの動的なプロパティに値をバインドしたいときがあるかもしれません。それを実現するためには v-bind を使用できます。さらに、v-bind を使用することで入力値に文字列以外の値もバインドできるようになります。</p>
+
+      <h5>チェックボックス</h5>
+
+        <div id="v-model-checkbox2">
+          <input type="checkbox" id="checkbox" v-model="checked" true-value="はい" false-value="いいえ" />
+          <label for="checkbox">{{ checked }}</label>
+        </div>
+
+        <p>true-value と false-value 属性は input の value 属性には影響を及ぼしません。なぜならブラウザはチェックされていないチェックボックスをフォーム送信内容には含めないためです。2 つの値（例: "yes" または "no"）のうち 1 つが必ず送信されることを保証するには、代わりにラジオを使用してください。</p>
+
+      <h5>ラジオ</h5>
+
+        <input type="radio" v-model="pick" v-bind:value="a" />
+
+      <h5>セレクトオプション</h5>
+
+        <select v-model="selected">
+          <!-- インラインオブジェクトリテラル -->
+          <option :value="{ number: 123 }">123</option>
+        </select>
+
+    <h4>修飾子</h4>
+
+      <h5>.lazy</h5>
+        <p>デフォルトでは v-model は各 input イベント後に入力値とデータを同期します（上述の IME 入力の例外はあります）。lazy 修飾子を加えることで、change イベント後に同期するよう変更できます。</p>
+
+        <!-- "input" ではなく "change" イベントの後に同期されます -->
+        <input v-model.lazy="msg" />
+
+      <h5>.number</h5>
+        <p>ユーザ入力を自動的に number へ型キャストさせたい場合は、v-model で管理している input に number 修飾子を加えることができます。</p>
+
+        <input v-model.number="age" type="text" />
+
+        <p>これは入力タイプが text の場合によく使われます。入力タイプが number の場合、Vue は生の文字列値を自動的に数値へ変換できるため、v-model に .number を追加する必要はありません。値が parseFloat() で解析できない場合は、元の値が返されます。</p>
+
+      <h5>.trim</h5>
+        <p>ユーザ入力から空白を自動で取り除きたい場合は、v-model で管理している input に trim 修飾子を加えることができます。</p>
+
+        <input v-model.trim="msg" />
+
+    <h4>コンポーネントの v-model</h4>
+      <p>HTML 組み込みの input タイプが、常にあなたのニーズに適っているとは限りません。幸運にも、Vue コンポーネントによって、動作を隅々までカスタマイズ可能な再利用性のある入力フォームを自作することができます。それらのフォームに v-model を使うことも可能です！詳しくは、コンポーネントガイドの カスタム input を参照してください。</p>
+
+  <h3>コンポーネントの基本</h3>
+
+    <h4>基本例</h4>
+      <p>Vue コンポーネントの例を次に示します。</p>
+      <p>ここでは単純な例を示していますが、典型的な Vue アプリケーションでは文字列テンプレートではなく単一ファイルコンポーネント（別名 *.vue ファイル、 SFC と省略）を使用します。</p>
+      <p>コンポーネントは名前付きの再利用可能なインスタンスです。この例の場合は button-counter です。このコンポーネントをルートインスタンスの中でカスタム要素として使用することができます。</p>
+
+      <div id="components-demo">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+      </div>
+
+      <p>コンポーネントは再利用可能なインスタンスなので、data、 computed、 watch、 methods、そしてライフサイクルフックのようなルートインスタンスと同様のオプションが利用可能です。</p>
+
+    <h4>コンポーネントの再利用</h4>
+      <p>コンポーネントは必要なだけ何度でも再利用できます。（上の例に書き足し済）</p>
+      <p>ボタンをクリックすると、それぞれが独自の count を保持することに注意してください。 これはコンポーネントを使用する度に新しいコンポーネントのインスタンスが作成されるためです。</p>
+
+    <h4>コンポーネントの構成</h4>
+      <p>一般的にアプリケーションはネストされたコンポーネントのツリーに編成されます。</p>
+      <p>例えば、 ヘッダー、サイドバー、コンテンツエリアなどのコンポーネントがあり、それぞれには一般的にナビゲーションリンクやブログ投稿などのコンポーネントが含まれています。</p>
+      <p>これらのコンポーネントをテンプレートで使用するためには、 Vue がそれらを認識できるように登録する必要があります。コンポーネントの登録にはグローバルとローカルの 2 種類があります。これまでは、アプリケーションの component メソッドを利用してグローバルに登録してきただけです。</p>
+      <p>グローバルに登録されたコンポーネントは、アプリケーション内のどのコンポーネントのテンプレートでも使うことができます。</p>
+
+    <h4>プロパティを用いた子コンポーネントへのデータの受け渡し</h4>
+      <p>プロパティはコンポーネントに登録できるカスタム属性です。値がプロパティ属性に渡されると、そのコンポーネントインスタンスのプロパティになります。先ほどのブログ投稿用のコンポーネントにタイトルを渡すためには、props オプションを用いてこのコンポーネントが受け取るプロパティのリストの中に含めることができます。</p>
+
+    <h4>子コンポーネントのイベントを購読する</h4>
+      <p>blog-post コンポーネントを開発する中で、いくつかの機能で親コンポーネントとの通信が必要になるかもしれません。例えば、ページの他の部分の大きさはそのままで、ブログ記事のテキストを拡大するアクセシビリティ機能を実装することを決めるかもしれません。<br>
+      親コンポーネントでは、postFontSize データプロパティを追加することでこの機能をサポートすることができます:</p>
+
+      <div id="blog-posts-events-demo">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+          <blog-post
+            v-for="post in posts"
+            :key="post.id"
+            :title="post.title"
+            @enlarge-text="postFontSize += 0.1"
+          ></blog-post>
+        </div>
+      </div>
+
+      <h5>イベントと値を発行する</h5>
+        <p>イベントを特定の値と一緒に発行すると便利な場合があります。例えば、テキストをどれだけ大きく表示するかを blog-post コンポーネントの責務とさせたいかもしれません。そのような場合、 $emit の第二引数を使ってこの値を渡すことができます</p>
+
+        <button @click="$emit('enlargeText', 0.1)">
+          文字を大きくする
+        </button>
+
+        <p>そして親でこのイベントを購読すると、 $event を用いて排出されたイベントの値にアクセスすることができます</p>
+
+        <blog-post ... @enlarge-text="postFontSize += $event"></blog-post>
+
+        <p>または、イベントハンドラがメソッドの場合</p>
+
+        <blog-post ... @enlarge-text="onEnlargeText"></blog-post>
+
+        <p>値はそのメソッドの第一引数として渡されます</p>
+
+      <h5>コンポーネントで v-model を使う</h5>
+        <p>カスタムイベントは v-model で動作するカスタム入力を作成することもできます。このことを覚えておいてください</p>
+
+        <input v-model="searchText" />
+
+        <p>これは以下と同じことです</p>
+
+        <input :value="searchText" @input="searchText = $event.target.value" />
+
+        <p>コンポーネントで使用する場合、 v-model は代わりにこれを行います</p>
+
+        <custom-input
+          :model-value="searchText"
+          @update:model-value="searchText = $event"
+        ></custom-input>
+
+        <p>ここでは in-DOM テンプレートを使用しているため、 model-value をケバブケースで表記していることに注意してください。ケバブケースの属性とキャメルケースの属性に関してはDOM テンプレートの構文解析の注意点の章で詳しく解説されています。</p>
+
+        <p>これが実際に機能するためには、テンプレート内の <input> は以下でなければなりません</p>
+
+        <ul>
+          <li>value 属性を modelValue プロパティにバインドする</li>
+          <li>input では、 update:modelValue イベントを新しい値と共に発行する</li>
+        </ul>
+
+        <p>以下のようになります</p>
+        <p>これで v-model はこのコンポーネントで完璧に動作します</p>
+
+        <custom-input v-model="searchText"></custom-input>
+
+    <h4>スロットによるコンテンツ配信</h4>
+      <p>HTML 要素のように、コンポーネントに要素を渡すことができると便利なことがよくあります。例えば以下の通り</p>
+
+      <div id="slots-demo">
+        <alert-box>
+          Something bad happened.
+        </alert-box>
+      </div>
+
+      <p>JSで見た通り、コンテンツを配置したいところにプレースホルダとして slot を使います。</p>
+
+    <h4>動的なコンポーネント</h4>
+      <p>タブ付きのインターフェースのように、コンポーネント間を動的に切り替えると便利なことがあります</p>
+
+      <div id="dynamic-component-demo" class="demo">
+        <button
+          v-for="tab in tabs"
+          v-bind:key="tab"
+          v-bind:class="['tab-button', { active: currentTab === tab }]"
+          v-on:click="currentTab = tab"
+        >
+          {{ tab }}
+        </button>
+      
+        <!-- コンポーネントは currentTabComponent に変更があったときに変更されます -->
+        <component v-bind:is="currentTabComponent" class="tab"></component>
+      </div>
+
+    <h4>DOM テンプレートパース時の注意</h4>
+      <p>Vue のテンプレートを DOM に直接書いている場合、Vue は DOM からテンプレート文字列を取得する必要があります。これはブラウザのネイティブな HTML 解析の動作に起因するいくつかの注意点につながります。</p>
+
+      <p>以下の制限は、DOM で直接テンプレートを書いている場合にのみ適用されることに注意してください。次のソースから文字列テンプレートを使っている場合には適用されません。</p>
+      <ul>
+        <li>文字列テンプレート（例: template: '...'）</li>
+        <li>単一ファイルコンポーネント（.vue）</li>
+        <li>script type="text/x-template"</li>
+      </ul>
+
+      <h5>要素の配置制限</h5>
+        <p>ul、ol、table、select のようないくつかの HTML 要素にはその内側でどの要素が現れるかに制限があり、li、tr、optionのようないくつかの属性は他の特定の要素の中にしか現れません。</p>
+
+        <p>このような制限を持つ属性を含むコンポーネントを使用すると問題が発生することがあります。例えば</p>
+
+        <table>
+          <blog-post-row></blog-post-row>
+        </table>
+
+        <p>このカスタムコンポーネント <blog-post-row> は無効なコンテンツとして巻き取られ、最終的にレンダリングされた出力でエラーが発生します。回避策として特別な is 属性 を使うことができます</p>
+
+        <table>
+          <tr is="vue:blog-post-row"></tr>
+        </table>
+
+        <p>ネイティブの HTML 要素で使われるとき、Vue コンポーネントとして解釈されるためには is の値の前に vue: を付ける必要があります。これはネイティブの カスタマイズされた組み込み要素 (opens new window)との混同を避けるために必要です。</p>
+
+      <h5>大文字小文字の違いを無視</h5>
+        <p>HTML の属性名は大文字小文字を区別しないので、ブラウザは全ての大文字を小文字として解釈します。つまり、DOM 内テンプレートを使用している場合、キャメルケースのプロパティ名やイベントハンドラのパラメータはそれと同等のケバブケース（ハイフンで区切られた記法）を使用する必要があります。</p>
+
+<!-- 基本はここまで。 -->
 
 
 

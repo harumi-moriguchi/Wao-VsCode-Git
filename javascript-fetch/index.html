@@ -38,14 +38,37 @@
 </head>
 <body>
 
-  <p>ボタンをクリックするとデータを取得します。</p>
+  <h3>JS使用</h3>
 
-  <form>
-    <input type="button" value="データの取得" onClick="getData()">
-  </form>
-
-  <!-- サーバから受信したテキストをHTMLページ内に表示する -->
+  <h4>csvDataを表示</h4>
   <div id="file_area"></div>
+
+  <h4>秋田のpoint_bodyを表示</h4>
+  <div id="file_area2"></div>
+
+  <h3>Vue使用</h3>
+
+  <div id="list-rendering">
+
+    <h4>各県のポイントの先生のポジション</h4>
+      <ol>
+        <li v-for="pref in vueData">
+          <p :class="pref.prefecture_dir">{{ pref.point_position }}</p>
+          <p v-if="pref.prefecture_dir === 'akita'">pref.prefecture_dir === 'akita'ならこれも表示</p>
+        </li>
+      </ol>
+
+  </div>
+
+  <h3>プロパティを用いた子コンポーネントへのデータの受け渡し</h3>
+
+  <div id="blog-post-demo">
+    <blog-post
+      v-for="pref in vueData"
+      :key="pref.id"
+      :title="pref.point_position"
+    ></blog-post>
+  </div>
   
   <script src="https://unpkg.com/vue@next"></script>
   <script src="index.js" type="module"></script>

@@ -209,7 +209,7 @@ const app7 = Vue.createApp({
   methods: {
     increment() {
       // `this` はコンポーネントインスタンスを参照
-      this.count++
+      this.count+=2
     }
   }
 })
@@ -608,3 +608,324 @@ Vue.createApp({
     }
   }
 }).mount('#vfor-and-vif')
+
+/* コンポーネントと v-for */
+
+const app11 = Vue.createApp({
+  data() {
+    return {
+      newTodoText: '',
+      todos: [
+        {
+          id: 1,
+          title: 'Do the dishes'
+        },
+        {
+          id: 2,
+          title: 'Take out the trash'
+        },
+        {
+          id: 3,
+          title: 'Mow the lawn'
+        }
+      ],
+      nextTodoId: 4
+    }
+  },
+  methods: {
+    addNewTodo() {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})
+
+app11.component('todo-item', {
+  template: `
+    <li>
+      {{ title }}
+      <button @click="$emit('remove')">Remove</button>
+    </li>
+  `,
+  props: ['title'],
+  emits: ['remove']
+})
+
+app11.mount('#todo-list-example')
+
+/* イベントハンドリング */
+/* イベントの購読 */
+
+Vue.createApp({
+  data() {
+    return {
+      counter: 0
+    }
+  }
+}).mount('#basic-event')
+
+/* メソッドイベントハンドラ */
+
+Vue.createApp({
+  data() {
+    return {
+      name: 'Vue.js'
+    }
+  },
+  methods: {
+    greet(event) {
+      // メソッド内の `this` は、 Vue インスタンスを参照します
+      alert('こんにちは' + this.name + '!')
+      // `event` は、ネイティブ DOM イベントです
+      if (event) {
+        alert(event.target.tagName)
+      }
+      // イベントが発生した場所のタグ名を表示
+    }
+  }
+}).mount('#event-with-method')
+
+/* インラインメソッドハンドラ */
+
+Vue.createApp({
+  methods: {
+    say(message) {
+      alert(message)
+    }
+  }
+}).mount('#inline-handler')
+
+// ...
+/* methods: {
+  warn(message, event) {
+    // ネイティブイベントを参照しています
+    if (event) {
+      event.preventDefault()
+    }
+    alert(message)
+  }
+} */
+
+/* 複数イベントハンドラ */
+
+// ...
+/* methods: {
+  one(event) {
+    // one($event)のハンドラーロジック
+  },
+  two(event) {
+    // two($event)のハンドラーロジック
+  }
+} */
+
+
+/* フォーム入力バインディング */
+/* 基本的な使い方 */
+/* テキスト */
+
+Vue.createApp({
+  data() {
+    return {
+      message: ''
+    }
+  }
+}).mount('#v-model-basic')
+
+/* 複数行テキスト */
+
+Vue.createApp({
+  data() {
+    return {
+      message: ''
+    }
+  }
+}).mount('#v-model-textarea')
+
+/* チェックボックス */
+
+Vue.createApp({
+  data() {
+    return {
+      checked: false
+    }
+  }
+}).mount('#v-model-checkbox')
+
+Vue.createApp({
+  data() {
+    return {
+      checkedNames: []
+    }
+  }
+}).mount('#v-model-multiple-checkboxes')
+
+/* ラジオ */
+
+Vue.createApp({
+  data() {
+    return {
+      picked: ''
+    }
+  }
+}).mount('#v-model-radiobutton')
+
+/* セレクト */
+
+Vue.createApp({
+  data() {
+    return {
+      selected: ''
+    }
+  }
+}).mount('#v-model-select')
+
+Vue.createApp({
+  data() {
+    return {
+      selected: ''
+    }
+  }
+}).mount('#v-model-select2')
+
+Vue.createApp({
+  data() {
+    return {
+      selected: 'まだ選べてないよ',
+      options: [
+        { text: 'いちご', value: 'いちご' },
+        { text: 'みかん', value: 'みかん' },
+        { text: 'ぶどう', value: 'ぶどう' }
+      ]
+    }
+  }
+}).mount('#v-model-select-dynamic')
+
+/* チェックボックス */
+
+Vue.createApp({
+  data() {
+    return {
+      checked: 'いいえ'
+    }
+  }
+}).mount('#v-model-checkbox2')
+
+/* コンポーネントの基本 */
+/* 基本例 */
+
+// Vue アプリケーションを作成します
+const app12 = Vue.createApp({})
+
+// グローバルな button-counter というコンポーネントを定義します
+app12.component('button-counter', {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  template: `
+    <button @click="count++">
+      あなたはボタンを {{ count }} 回クリックしました
+    </button>`
+})
+
+app12.mount('#components-demo')
+
+/* プロパティを用いた子コンポーネントへのデータの受け渡し */
+/* 子コンポーネントのイベントを購読する */
+
+const App = {
+  data() {
+    return {
+      posts: [
+        { id: 1, title: 'Vueとの旅' },
+        { id: 2, title: 'Vueでブログ' },
+        { id: 3, title: 'なぜVueはそんなに楽しいの' }
+      ],
+      postFontSize: 1
+    }
+  }
+}
+
+const app13 = Vue.createApp(App)
+
+app13.component('blog-post', {
+  props: ['title'],
+  template: `
+    <div class="blog-post">
+      <h6>{{ title }}</h6>
+      <button @click="$emit('enlargeText')">
+        文字を大きくする
+      </button>
+    </div>
+  `
+})
+
+app13.mount('#blog-posts-events-demo')
+
+/* methods: {
+  onEnlargeText(enlargeAmount) {
+    this.postFontSize += enlargeAmount
+  }
+} */
+
+/* コンポーネントで v-model を使う */
+
+/* app.component('custom-input', {
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+  template: `
+    <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    >
+  `
+}) */
+
+/* スロットによるコンテンツ配信 */
+
+const app14 = Vue.createApp({})
+
+app14.component('alert-box', {
+  template: `
+    <div class="error-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+
+app14.mount('#slots-demo')
+
+/* 動的なコンポーネント */
+
+const app15 = Vue.createApp({
+  data() {
+    return {
+      currentTab: 'Home',
+      tabs: ['Home', 'Posts', 'Archive']
+    }
+  },
+  computed: {
+    currentTabComponent() {
+      return 'tab-' + this.currentTab.toLowerCase()
+    }
+  }
+})
+
+app15.component('tab-home', {
+  template: `<div class="demo-tab">Home component</div>`
+})
+app15.component('tab-posts', {
+  template: `<div class="demo-tab">Posts component</div>`
+})
+app15.component('tab-archive', {
+  template: `<div class="demo-tab">Archive component</div>`
+})
+
+app15.mount('#dynamic-component-demo')
+
+/* DOM テンプレートパース時の注意 */
