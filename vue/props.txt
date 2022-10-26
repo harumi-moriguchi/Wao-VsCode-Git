@@ -1,0 +1,197 @@
+app13.component('blog-post', {
+  props: {
+    prefectureId: String,
+    id: String,
+    prefectureDir: String,
+    prefectureName: String,
+    elemMin: String,
+    elemMax: String,
+    taisho: String,
+    seasonOpen: String,
+    seasonClose: String,
+    pointTitle: String,
+    pointBody: String,
+    pointPosition: String,
+    pointName: String,
+    pointAlt: String,
+    jr4Trial: String,
+    jr4Curriculum: String,
+    jr4Target: String,
+    jr4Title: String,
+    jr4Body: String,
+    jr5Trial: String,
+    jr5Curriculum: String,
+    jr5Target: String,
+    jr5Title: String,
+    jr5Body: String,
+    jr6Trial: String,
+    jr6Curriculum: String,
+    jr6Target: String,
+    jr6Title: String,
+    jr6Body: String,
+    integTrial: String,
+    integCurriculum: String,
+    integTarget: String,
+    integTitle: String,
+    integBody: String,
+    privilege1Flag: String,
+    privilege1Target: String,
+    privilege1Title: String,
+    privilege1Detail: String,
+    privilege2Flag: String,
+    privilege2Target: String,
+    privilege2Title: String,
+    privilege2Detail: String,
+    privilege3Flag: String,
+    privilege3Target: String,
+    privilege3Title: String,
+    privilege3Detail: String,
+    privilege4Flag: String,
+    privilege4Target: String,
+    privilege4Title: String,
+    privilege4Detail: String,
+    course1Title: String,
+    course1Target: String,
+    course1School1: String,
+    course1School2: String,
+    course1School3: String,
+    course1School4: String,
+    course1School5: String,
+    course1School6: String,
+    course1School7: String,
+    course1School8: String,
+    course1School9: String,
+    course1School10: String,
+    course1School11: String,
+    course1Note: String,
+    course2Title: String,
+    course2Target: String,
+    course2School1: String,
+    course2School2: String,
+    course2School3: String,
+    course2School4: String,
+    course2School5: String,
+    course2School6: String,
+    course2School7: String,
+    course2School8: String,
+    course2School9: String,
+    course2School10: String,
+    course2School11: String,
+    course2Note: String,
+    course3Title: String,
+    course3Target: String,
+    course3School1: String,
+    course3School2: String,
+    course3School3: String,
+    course3School4: String,
+    course3School5: String,
+    course3School6: String,
+    course3School7: String,
+    course3School8: String,
+    course3School9: String,
+    course3School10: String,
+    course3School11: String,
+    course3Note: String,
+    courseTotalNote: String
+  },
+
+
+
+
+    <blog-post
+      v-for="pref in vueData"
+      :key="pref.id"
+      :prefectureId="pref.prefecture_id"
+      :id="pref.id"
+      :prefectureDir="pref.prefecture_dir"
+      :prefectureName="pref.prefecture_name"
+      :elemMin="pref.elem_min"
+      :elemMax="pref.elem_max"
+      :taisho="pref.taisho"
+      :seasonOpen="pref.season_open"
+      :seasonClose="pref.season_close"
+      :pointTitle="pref.point_title"
+      :pointBody="pref.point_body"
+      :pointPosition="pref.point_position"
+      :pointName="pref.point_name"
+      :pointAlt="pref.point_alt"
+      :jr4Trial="pref.jr4_trial"
+      :jr4Curriculum="pref.jr4_curriculum"
+      :jr4Target="pref.jr4_target"
+      :jr4Title="pref.jr4_title"
+      :jr4Body="pref.jr4_body"
+      :jr5Trial="pref.jr5_trial"
+      :jr5Curriculum="pref.jr5_curriculum"
+      :jr5Target="pref.jr5_target"
+      :jr5Title="pref.jr5_title"
+      :jr5Body="pref.jr5_body"
+      :jr6Trial="pref.jr6_trial"
+      :jr6Curriculum="pref.jr6_curriculum"
+      :jr6Target="pref.jr6_target"
+      :jr6Title="pref.jr6_title"
+      :jr6Body="pref.jr6_body"
+      :integTrial="pref.integ_trial"
+      :integCurriculum="pref.integ_curriculum"
+      :integTarget="pref.integ_target"
+      :integTitle="pref.integ_title"
+      :integBody="pref.integ_body"
+      :privilege1Flag="pref.privilege1_flag"
+      :privilege1Target="pref.privilege1_target"
+      :privilege1Title="pref.privilege1_title"
+      :privilege1Detail="pref.privilege1_detail"
+      :privilege2Flag="pref.privilege2_flag"
+      :privilege2Target="pref.privilege2_target"
+      :privilege2Title="pref.privilege2_title"
+      :privilege2Detail="pref.privilege2_detail"
+      :privilege3Flag="pref.privilege3_flag"
+      :privilege3Target="pref.privilege3_target"
+      :privilege3Title="pref.privilege3_title"
+      :privilege3Detail="pref.privilege3_detail"
+      :privilege4Flag="pref.privilege4_flag"
+      :privilege4Target="pref.privilege4_target"
+      :privilege4Title="pref.privilege4_title"
+      :privilege4Detail="pref.privilege4_detail"
+      :course1Title="pref.course1_title"
+      :course1Target="pref.course1_target"
+      :course1School1="pref.course1_school1"
+      :course1School2="pref.course1_school2"
+      :course1School3="pref.course1_school3"
+      :course1School4="pref.course1_school4"
+      :course1School5="pref.course1_school5"
+      :course1School6="pref.course1_school6"
+      :course1School7="pref.course1_school7"
+      :course1School8="pref.course1_school8"
+      :course1School9="pref.course1_school9"
+      :course1School10="pref.course1_school10"
+      :course1School11="pref.course1_school11"
+      :course1Note="pref.course1_note"
+      :course2Title="pref.course2_title"
+      :course2Target="pref.course2_target"
+      :course2School1="pref.course2_school1"
+      :course2School2="pref.course2_school2"
+      :course2School3="pref.course2_school3"
+      :course2School4="pref.course2_school4"
+      :course2School5="pref.course2_school5"
+      :course2School6="pref.course2_school6"
+      :course2School7="pref.course2_school7"
+      :course2School8="pref.course2_school8"
+      :course2School9="pref.course2_school9"
+      :course2School10="pref.course2_school10"
+      :course2School11="pref.course2_school11"
+      :course2Note="pref.course2_note"
+      :course3Title="pref.course3_title"
+      :course3Target="pref.course3_target"
+      :course3School1="pref.course3_school1"
+      :course3School2="pref.course3_school2"
+      :course3School3="pref.course3_school3"
+      :course3School4="pref.course3_school4"
+      :course3School5="pref.course3_school5"
+      :course3School6="pref.course3_school6"
+      :course3School7="pref.course3_school7"
+      :course3School8="pref.course3_school8"
+      :course3School9="pref.course3_school9"
+      :course3School10="pref.course3_school10"
+      :course3School11="pref.course3_school11"
+      :course3Note="pref.course3_note"
+      :courseTotalNote="pref.course_total_note"
+    ></blog-post>
