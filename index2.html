@@ -1,23 +1,89 @@
-1. nuxi generate コマンド (SSG)
+************************************************************************
 
-nuxi generate コマンドは、ビルド時にアプリケーションの全ルート（動的ルートも含む）を事前にレンダリングし、完全なHTMLファイルを生成します。 
-動作モード: サーバーサイドレンダリング (SSR) の機能を活用して、ビルド時にすべてのページの静的HTMLファイルを生成します。
+GitHub Pull Requests
+拡張機能インストール
+ログインしなおす
 
-特徴:
 
-初回読み込み時に完全なHTMLが提供されるため、パフォーマンスが非常に高く、SEOにも強いです。
+https://nuxt.com/docs/4.x/getting-started/prerendering
+npx nuxt generate
+npx serve .output/public
 
-生成された静的ファイルは、CDNやS3、GitHub Pagesなど、あらゆる静的ホスティングサービスにデプロイできます。
 
-ビルド時にデータフェッチが行われるため、データが常に最新であるとは限らない動的コンテンツには向いていません（ただし、ISRなどのハイブリッドレンダリング手法と組み合わせることは可能です）。
+************************************************************************
 
-設定・実行方法:
 
-nuxt.config.ts で ssr: true (デフォルト値) を維持します。
+1. インストール
+プロジェクトのルートディレクトリで以下のコマンドを実行し、モジュールをインストールします。
 
-以下のコマンドを実行します:
+# npmの場合
+npm install -D @nuxtjs/tailwindcss
+
+2. nuxt.config の設定 
+nuxt.config.ts ファイルの modules に、インストールしたモジュールを追加します。 
+
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/tailwindcss'
+  ],
+  compatibilityDate: '2024-04-03', // Nuxt 4を使用するための設定
+})
+
+
+
+************************************************************************
+
+1. モジュールのインストール
+まず、プロジェクトのルートディレクトリで以下のコマンドを実行し、パッケージをインストールします。 
+
 bash
-npx nuxi generate
+npm install -D @nuxtjs/google-fonts
 
-出力先はデフォルトで .output/public ディレクトリになります。 
+2. nuxt.config.ts の設定
+nuxt.config.ts にモジュールを追加し、使いたいフォントファミリーを設定します。 
 
+typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/google-fonts'
+  ],
+
+  googleFonts: {
+    // 使用するフォントの設定
+    families: {
+      'Noto+Sans+JP': [400, 700], // 例：Noto Sans JPのRegularとBold
+      Roboto: {
+        wght: [100, 400, 700],
+        ital: [100] // イタリック体も指定可能
+      },
+    },
+    // フォントをローカルにダウンロードして配信する場合 (おすすめ)
+    download: true,
+    // inject: true, // デフォルトでtrue: CSSに自動注入
+  }
+})
+
+************************************************************************
+
+bash
+npm install @vesp/nuxt-fontawesome
+
+nuxt.config.ts にモジュールを追加し、使用するアイコンを指定します。 
+typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: [
+    '@vesp/nuxt-fontawesome'
+  ],
+  fontawesome: {
+    icons: {
+      solid: ['coffee', 'child', 'user', 'home'],
+      regular: ['comment', 'calendar', 'clock'],
+      brands: ['twitter', 'github', 'facebook']
+    }
+  }
+})
+
+************************************************************************
